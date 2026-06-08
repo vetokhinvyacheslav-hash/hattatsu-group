@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { useId, useState, type ReactNode } from 'react'
 
 export interface AccordionItem {
@@ -44,13 +45,22 @@ export function Accordion({ items }: AccordionProps) {
                 </span>
               </button>
             </h3>
-            <div
-              id={`${baseId}-${item.id}`}
-              hidden={!isOpen}
-              className="border-t border-border px-6 py-5 text-sm leading-relaxed text-gray-text"
-            >
-              {item.content}
-            </div>
+            <AnimatePresence initial={false}>
+              {isOpen ? (
+                <motion.div
+                  id={`${baseId}-${item.id}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0, transition: { duration: 0.18, ease: [0.4, 0, 1, 1] } }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="border-t border-border px-6 py-5 text-sm leading-relaxed text-gray-text">
+                    {item.content}
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
         )
       })}

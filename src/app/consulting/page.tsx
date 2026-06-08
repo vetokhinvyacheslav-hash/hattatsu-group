@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { HeroSection } from '@/components/ui/HeroSection'
 import { Section, BulletList, NumberedList } from '@/components/ui/Section'
 import { Tabs, type TabItem } from '@/components/ui/Tabs'
@@ -228,6 +229,15 @@ export default function ConsultingPage() {
       />
 
       <Section>
+        <div className="relative mb-12 h-64 overflow-hidden rounded-2xl md:h-80">
+          <Image
+            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+            alt="Производственный консалтинг Hattatsu Group"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="object-cover"
+          />
+        </div>
         <Tabs tabs={TABS} />
       </Section>
 

@@ -1,24 +1,32 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Brand palette — Hattatsu Group */
   --color-white: #FFFFFF;
-  --color-light-gray: #F5F7FA;
-  --color-light-blue: #EEF3F8;
-  --color-graphite: #1B1F27;
-  --color-gray-text: #6F7785;
-  --color-blue-primary: #172E73;
-  --color-blue-secondary: #2457C5;
-  --color-border: #D8DDE5;
-  --color-dark: #080D14;
+  --color-light-gray: #F5F5F8;
+  --color-light-blue: #EEEEF8;
+  --color-graphite: #20252F;
+  --color-gray-text: #5A5A72;
+  --color-blue-primary: #110F56;
+  --color-blue-secondary: #2B27A0;
+  --color-border: #E2E2EC;
+  --color-dark: #20252F;
+  --color-darker: #0D1018;
   --color-orange: #F08A24;
+  --color-success: #22C55E;
+  --color-error: #EF4444;
 
-  --font-sans: 'Montserrat', 'Inter', sans-serif;
+  --font-sans: var(--font-montserrat, 'Montserrat'), 'Inter', sans-serif;
 
   --breakpoint-xs: 480px;
 }
 
 :root {
   --container-max: 1280px;
+  /* Strong easing curves (Emil Kowalski / easing.dev) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 * {
@@ -82,6 +90,7 @@ body {
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .h2 {
@@ -89,12 +98,14 @@ body {
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .h3 {
   font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.2;
   font-weight: 700;
+  text-wrap: balance;
 }
 
 .body-text {

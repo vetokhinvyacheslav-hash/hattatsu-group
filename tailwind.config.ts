@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: '#080D14',
+        dark: '#20252F',
         navy: '#111A33',
-        blue: '#172E73',
+        blue: {
+          primary: '#110F56',
+          secondary: '#2B27A0',
+        },
         steel: '#6F7785',
         light: '#F4F6F8',
         line: '#D8DDE5',
         orange: '#F08A24',
-      },
-      fontFamily: {
-        sans: ['Manrope', 'Inter', 'sans-serif'],
       },
       fontSize: {
         'h1': ['80px', { lineHeight: '1.0', fontWeight: '800' }],

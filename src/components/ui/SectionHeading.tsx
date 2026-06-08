@@ -16,7 +16,7 @@ export function SectionHeading({
   const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left'
   return (
     <div className={`${alignment} max-w-3xl`}>
-      {preTitle ? <p className="pre-title mb-4">{preTitle}</p> : null}
+      {preTitle ? <p className={`pre-title mb-4${light ? ' text-orange' : ''}`}>{preTitle}</p> : null}
       <h2 className={`h2 ${light ? 'text-white' : 'text-graphite'}`}>{title}</h2>
       {subtitle ? (
         <p

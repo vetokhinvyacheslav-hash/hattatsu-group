@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, type ReactNode } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface ModalProps {
   open: boolean
@@ -55,35 +56,45 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
     }
   }, [open, onClose])
 
-  if (!open) return null
-
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-dark/60 p-4 py-10 backdrop-blur-sm"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose()
-      }}
-    >
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label={title}
-        className="relative w-full max-w-lg rounded-2xl bg-white p-7 shadow-xl"
-      >
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <h2 className="text-2xl font-bold text-graphite">{title}</h2>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Закрыть"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-gray-text transition-colors hover:bg-light-gray hover:text-graphite"
+    <AnimatePresence>
+      {open ? (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-dark/60 p-4 py-10 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) onClose()
+          }}
+        >
+          <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={title}
+            initial={{ opacity: 0, scale: 0.95, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 12, transition: { duration: 0.15, ease: [0.4, 0, 1, 1] } }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-lg rounded-2xl bg-white p-7 shadow-xl"
           >
-            <span aria-hidden className="text-xl">×</span>
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <h2 className="text-2xl font-bold text-graphite">{title}</h2>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Закрыть"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-gray-text transition-colors hover:bg-light-gray hover:text-graphite"
+              >
+                <span aria-hidden className="text-xl">×</span>
+              </button>
+            </div>
+            {children}
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
   )
 }

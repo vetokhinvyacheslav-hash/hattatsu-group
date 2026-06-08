@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { PlaceholderImage } from './PlaceholderImage'
 
 interface HeroSectionProps {
-  preTitle: string
+  preTitle?: string
   title: string
   description: string
   actions?: ReactNode
@@ -29,7 +29,7 @@ export function HeroSection({
           }`}
         >
           <div>
-            <p className="pre-title mb-5">{preTitle}</p>
+            {preTitle ? <p className="pre-title mb-5">{preTitle}</p> : null}
             <h1 className="h1 text-graphite">{title}</h1>
             <p className="body-text mt-6 max-w-xl text-gray-text">
               {description}

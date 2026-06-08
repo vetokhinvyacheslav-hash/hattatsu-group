@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MeetingModalProvider } from '@/components/ui/MeetingModal'
+import { StickyCTA } from '@/components/ui/StickyCTA'
 
 const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
@@ -39,6 +40,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <StickyCTA />
         </MeetingModalProvider>
       </body>
     </html>

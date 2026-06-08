@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { HeroSection } from '@/components/ui/HeroSection'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
 import { ContactForm } from '@/components/ui/ContactForm'
 import { ButtonLink } from '@/components/ui/Button'
+import { Reveal } from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
   title: 'Команда — Hattatsu Group',
@@ -12,18 +13,82 @@ export const metadata: Metadata = {
     'Эксперты Hattatsu Group: Lean, цифровизация, управление персоналом и развитие производственных систем.',
 }
 
-const EXPERTS = [
-  { name: 'Смбат Джанунц', role: 'Основатель' },
-  { name: 'Семён Горшенин', role: 'Lean-эксперт' },
-  { name: 'Владислав Терещенко', role: 'Цифровизация' },
-  { name: 'Лариса Черных', role: 'HR' },
+interface Expert {
+  name: string
+  role: string
+  bio: string
+  image: string
+}
+
+const EXPERTS: readonly Expert[] = [
+  {
+    name: 'Джанунц Смбат',
+    role: 'Основатель',
+    bio: '18+ лет в Lean. Ex-AGC Japan, Korea, Russia. Vlerick Leuven Gent Management School.',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Горшенин Семён',
+    role: 'Эксперт Kaizen & Lean Production',
+    bio: '140+ Kaizen-проектов. AGC Flat Glass, Barilla RUS. 6 Sigma Green Belt, Festo Academy.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Ездаков Максим',
+    role: 'Операционная эффективность',
+    bio: 'Рост OEE с 70 до 87%. AGC — от мастера до зам. директора по бизнес-системам.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Терещенко Владислав',
+    role: 'Цифровое обучение & симуляторы',
+    bio: '10+ зарегистрированных программ ЭВМ. СПбПУ, Nairi International University.',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Киреев Артур',
+    role: 'Маркетинг & развитие бизнеса',
+    bio: 'Доцент СПбПУ. 25+ лет в маркетинге и образовательных программах.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Черных Лариса',
+    role: 'HR-эксперт',
+    bio: 'CIPD UK. Магистр международного HR, Университет Кингстона. Кандидат психологических наук.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Ветохин Вячеслав',
+    role: 'Визуализация & бизнес-коммуникации',
+    bio: 'Перевод сложных научных концепций в язык бизнеса и визуальных решений. Автор патентов.',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Арустамян Арсен',
+    role: 'Fullstack веб-разработка',
+    bio: 'Разработка LMS, корпоративных порталов и интерактивных дашбордов для промышленности.',
+    image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
+  },
 ]
 
-const PROCESS = ['Задача', 'Экспертиза', 'Команда', 'Результат']
+const PROCESS = [
+  { label: 'Задача', desc: 'Формулируем цели и KPI проекта' },
+  { label: 'Экспертиза', desc: 'Подбираем экспертов под специфику' },
+  { label: 'Команда', desc: 'Собираем проектную группу' },
+  { label: 'Результат', desc: 'Сдаём измеримый результат' },
+]
 
 const CHANNELS = [
-  { title: 'Telegram', text: 'Новости, кейсы и материалы Hattatsu Group.', href: 'https://t.me/' },
-  { title: 'Max', text: 'Дополнительный канал коммуникации.', href: '#' },
+  {
+    title: 'Telegram',
+    text: 'Кейсы, материалы и новости Hattatsu Group.',
+    href: 'https://t.me/pd_academy',
+  },
+  {
+    title: 'Email',
+    text: 'Для деловых запросов и консультаций.',
+    href: 'mailto:info@hattatsu.pro',
+  },
 ]
 
 export default function TeamPage() {
@@ -31,60 +96,77 @@ export default function TeamPage() {
     <>
       <HeroSection
         withImage={false}
-        preTitle="Команда"
         title="Эксперты Hattatsu Group"
-        description="Практики с реальным опытом в производстве, Lean, цифровизации и управлении персоналом, собирающие команду под каждую задачу."
+        description="Практики с реальным производственным опытом. Каждый эксперт — специалист в своей области с историей реализованных проектов."
         actions={
           <ButtonLink href="#request">Запросить информацию</ButtonLink>
         }
       />
 
       <Section>
-        <SectionHeading preTitle="Эксперты" title="Ключевые специалисты" />
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {EXPERTS.map((expert) => (
-            <div
+        <SectionHeading
+          preTitle="Команда"
+          title="8 экспертов, 120+ лет совокупного опыта"
+          subtitle="Консультанты, тренеры и разработчики с практическим опытом на крупнейших производственных предприятиях России и СНГ."
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {EXPERTS.map((expert, index) => (
+            <Reveal
               key={expert.name}
-              className="rounded-2xl border border-border bg-white p-5 shadow-sm"
+              as="article"
+              delay={(index % 4) * 0.07}
+              className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"
             >
-              <PlaceholderImage label="Фото" ratio="aspect-square" />
-              <p className="mt-4 font-bold text-graphite">{expert.name}</p>
-              <p className="text-sm text-gray-text">{expert.role}</p>
-              <ButtonLink
-                href="#request"
-                variant="ghost"
-                className="mt-4 !px-0"
-              >
-                Запросить информацию →
-              </ButtonLink>
-            </div>
+              <div className="relative aspect-square w-full overflow-hidden">
+                <Image
+                  src={expert.image}
+                  alt={`${expert.name}, ${expert.role}`}
+                  fill
+                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                  className="object-cover object-left"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white to-transparent"
+                />
+              </div>
+              <div className="p-5">
+                <p className="font-bold text-graphite">{expert.name}</p>
+                <p className="mt-0.5 text-sm font-medium text-blue-primary">
+                  {expert.role}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-gray-text">
+                  {expert.bio}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Section>
 
       <Section tone="gray">
         <SectionHeading
-          preTitle="Подход"
           title="Как формируется команда проекта"
           align="center"
         />
-        <ol className="mx-auto mt-12 flex max-w-4xl flex-col items-stretch gap-4 md:flex-row md:items-center">
+        <ol className="mx-auto mt-12 flex max-w-4xl flex-col items-stretch gap-4 md:flex-row md:items-start">
           {PROCESS.map((step, index) => (
             <li
-              key={step}
-              className="flex flex-1 items-center gap-4 md:flex-col md:text-center"
+              key={step.label}
+              className="flex flex-1 flex-col items-center text-center"
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-primary text-lg font-bold text-white">
                 {index + 1}
               </span>
-              <span className="font-semibold text-graphite">{step}</span>
+              <span className="mt-3 font-semibold text-graphite">{step.label}</span>
+              <span className="mt-1 text-sm text-gray-text">{step.desc}</span>
             </li>
           ))}
         </ol>
       </Section>
 
       <Section>
-        <SectionHeading preTitle="Каналы" title="Медиа и каналы" align="center" />
+        <SectionHeading title="Медиа и каналы" align="center" />
         <div className="mx-auto mt-10 grid max-w-2xl gap-6 sm:grid-cols-2">
           {CHANNELS.map((channel) => (
             <a
@@ -103,12 +185,11 @@ export default function TeamPage() {
         </div>
       </Section>
 
-      <Section tone="gray" className="scroll-mt-24">
+      <Section tone="gray">
         <div id="request" className="scroll-mt-24" />
         <div className="grid gap-12 lg:grid-cols-2">
           <SectionHeading
-            preTitle="По запросу"
-            title="Личные данные по запросу"
+            title="Резюме и детальные профили"
             subtitle="Подробная информация об экспертах и их опыте предоставляется по запросу. Оставьте контакт — направим релевантные материалы."
           />
           <div className="rounded-2xl border border-border bg-white p-7 shadow-sm">
