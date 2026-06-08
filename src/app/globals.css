@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-white: #FFFFFF;
+  --color-light-gray: #F5F7FA;
+  --color-light-blue: #EEF3F8;
+  --color-graphite: #1B1F27;
+  --color-gray-text: #6F7785;
+  --color-blue-primary: #172E73;
+  --color-blue-secondary: #2457C5;
+  --color-border: #D8DDE5;
+  --color-dark: #080D14;
+  --color-orange: #F08A24;
+
+  --font-sans: 'Montserrat', 'Inter', sans-serif;
+
+  --breakpoint-xs: 480px;
+}
+
+:root {
+  --container-max: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-white);
+  color: var(--color-graphite);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.section-padding {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}
+
+/* Typography */
+.h1 {
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: clamp(30px, 4.2vw, 52px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.body-text {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+}
+
+.pre-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-blue-secondary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.tabs-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
