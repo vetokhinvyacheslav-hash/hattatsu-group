@@ -265,7 +265,7 @@ export default function HomePage() {
             style={{ width: '46%' }}
           >
             <Image
-              src="/images/hero-main.png"
+              src="/images/hero-main.jpg"
               alt="Эксперты Hattatsu Group"
               fill
               priority
