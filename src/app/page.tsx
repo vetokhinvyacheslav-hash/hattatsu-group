@@ -208,7 +208,7 @@ export default function HomePage() {
       {/* ── SECTION 1: HERO ── */}
       {/* Negative margin pulls the section behind the 72px sticky header so the
           image fills the full viewport from the very top */}
-      <section className="relative overflow-hidden bg-white" style={{ marginTop: '-72px' }}>
+      <section className="relative overflow-hidden bg-white">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
