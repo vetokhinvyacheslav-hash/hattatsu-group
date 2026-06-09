@@ -206,7 +206,9 @@ export default function HomePage() {
   return (
     <>
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative overflow-hidden bg-white">
+      {/* Negative margin pulls the section behind the 72px sticky header so the
+          image fills the full viewport from the very top */}
+      <section className="relative overflow-hidden bg-white" style={{ marginTop: '-72px' }}>
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -217,7 +219,7 @@ export default function HomePage() {
         />
 
         {/* Full-viewport split: padded content left · image bleeds to right edge */}
-        <div className="relative flex min-h-[calc(100dvh-7rem)] items-stretch">
+        <div className="relative flex min-h-screen items-stretch">
 
           {/* Left: content padded to match .container */}
           <div

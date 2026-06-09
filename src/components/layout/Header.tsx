@@ -206,13 +206,18 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const navBarRef = useRef<HTMLDivElement>(null)
 
+  const isHomePage = pathname === '/'
+  // Transparent overlay only on home page before user has scrolled past hero top
+  const isTransparent = isHomePage && !scrolled
+
   useEffect(() => {
     setMobileOpen(false)
     setServicesOpen(false)
   }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    // Higher threshold so the header stays transparent deep into the hero
+    const onScroll = () => setScrolled(window.scrollY > 80)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -252,18 +257,22 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top announcement bar */}
-      <div className="bg-blue-primary text-white">
-        <div className="container flex min-h-10 items-center justify-center py-2 text-center text-xs sm:text-sm">
-          Международная экспертиза · Lean-трансформация · Первый результат за 90 дней
+      {/* Announcement bar — hidden on home page to keep header height constant */}
+      {!isHomePage ? (
+        <div className="bg-blue-primary text-white">
+          <div className="container flex min-h-10 items-center justify-center py-2 text-center text-xs sm:text-sm">
+            Международная экспертиза · Lean-трансформация · Первый результат за 90 дней
+          </div>
         </div>
-      </div>
+      ) : null}
 
       {/* Main nav bar */}
       <div
         ref={navBarRef}
-        className={`relative border-b border-border bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-sm' : ''
+        className={`relative transition-all duration-500 ${
+          isTransparent
+            ? 'border-transparent bg-transparent'
+            : `border-b border-border bg-white ${scrolled ? 'shadow-sm' : ''}`
         }`}
       >
         <div className="container flex h-[72px] items-center justify-between gap-4 py-4">
@@ -279,7 +288,9 @@ export function Header() {
               width={180}
               height={58}
               priority
-              className="h-10 w-auto"
+              className={`h-10 w-auto transition-all duration-500 ${
+                isTransparent ? 'brightness-0 invert' : ''
+              }`}
             />
           </Link>
 
@@ -293,15 +304,23 @@ export function Header() {
                     <Link
                       href={section.href}
                       aria-current={active ? 'page' : undefined}
-                      className={`relative inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                        active ? 'text-blue-primary' : 'text-gray-text hover:text-graphite'
+                      className={`relative inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-300 ${
+                        active
+                          ? isTransparent
+                            ? 'text-white'
+                            : 'text-blue-primary'
+                          : isTransparent
+                            ? 'text-white/80 hover:text-white'
+                            : 'text-gray-text hover:text-graphite'
                       }`}
                     >
                       {section.label}
                       {active ? (
                         <span
                           aria-hidden
-                          className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-primary"
+                          className={`absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full transition-colors duration-300 ${
+                            isTransparent ? 'bg-white' : 'bg-blue-primary'
+                          }`}
                         />
                       ) : null}
                     </Link>
@@ -319,10 +338,12 @@ export function Header() {
               aria-expanded={servicesOpen}
               aria-haspopup="menu"
               onClick={() => setServicesOpen((v) => !v)}
-              className={`flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
+              className={`flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                 servicesOpen
                   ? 'border-blue-primary bg-blue-tint text-blue-primary'
-                  : 'border-border text-ink hover:border-blue-primary hover:text-blue-primary'
+                  : isTransparent
+                    ? 'border-white/50 text-white hover:border-white hover:bg-white/10'
+                    : 'border-border text-ink hover:border-blue-primary hover:text-blue-primary'
               }`}
             >
               Услуги
@@ -344,21 +365,33 @@ export function Header() {
 
             <Link
               href="/diagnostics"
-              className="inline-flex items-center justify-center rounded-full bg-blue-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-secondary"
+              className={`inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                isTransparent
+                  ? 'bg-white text-blue-primary hover:bg-white/90 focus-visible:outline-white'
+                  : 'bg-blue-primary text-white hover:bg-blue-secondary focus-visible:outline-blue-secondary'
+              }`}
             >
               Пройти диагностику
             </Link>
             <MeetingButton
               label="Консультация"
               variant="secondary"
-              className="!px-5 !py-2.5"
+              className={`!px-5 !py-2.5 transition-all duration-300 ${
+                isTransparent
+                  ? '!border-white/50 !text-white hover:!border-white hover:!bg-white/10'
+                  : ''
+              }`}
             />
           </div>
 
           {/* Mobile burger */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-blue-primary xl:hidden"
+            className={`flex h-10 w-10 items-center justify-center rounded-lg border xl:hidden transition-colors duration-300 ${
+              isTransparent
+                ? 'border-white/50 text-white'
+                : 'border-border text-blue-primary'
+            }`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
