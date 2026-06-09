@@ -5,181 +5,83 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { NAV_SECTIONS, type NavSection } from '@/lib/nav'
+import {
+  MAIN_NAV_SECTIONS,
+  NAV_SECTIONS,
+  SERVICES_NAV_SECTIONS,
+  type NavSection,
+} from '@/lib/nav'
 import { MeetingButton } from '@/components/ui/MeetingModal'
 
 function isSectionActive(section: NavSection, pathname: string): boolean {
   if (section.href === '/') return pathname === '/'
-  if (pathname === section.href || pathname.startsWith(`${section.href}/`)) {
-    return true
-  }
+  if (pathname === section.href || pathname.startsWith(`${section.href}/`)) return true
   return Boolean(section.children?.some((child) => pathname === child.href))
 }
 
-interface DesktopNavItemProps {
-  section: NavSection
+// ── Desktop services mega-menu ────────────────────────────────────────────────
+
+interface ServicesMegaMenuProps {
   pathname: string
+  onClose: () => void
 }
 
-function DesktopNavItem({ section, pathname }: DesktopNavItemProps) {
-  const [open, setOpen] = useState(false)
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const itemRef = useRef<HTMLLIElement>(null)
-  const hasChildren = Boolean(section.children?.length)
-  const active = isSectionActive(section, pathname)
-
-  const clearCloseTimer = () => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current)
-      closeTimer.current = null
-    }
-  }
-
-  const scheduleClose = () => {
-    clearCloseTimer()
-    closeTimer.current = setTimeout(() => setOpen(false), 120)
-  }
-
-  useEffect(() => {
-    if (!open) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-    const onClickOutside = (event: MouseEvent) => {
-      if (itemRef.current && !itemRef.current.contains(event.target as Node)) {
-        setOpen(false)
-      }
-    }
-    document.addEventListener('keydown', onKey)
-    document.addEventListener('mousedown', onClickOutside)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.removeEventListener('mousedown', onClickOutside)
-    }
-  }, [open])
-
-  useEffect(() => clearCloseTimer, [])
-
-  if (!hasChildren) {
-    return (
-      <li>
-        <Link
-          href={section.href}
-          aria-current={active ? 'page' : undefined}
-          className={`relative inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-            active ? 'text-blue-primary' : 'text-gray-text hover:text-graphite'
-          }`}
-        >
-          {section.label}
-          {active ? (
-            <span
-              aria-hidden
-              className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-primary"
-            />
-          ) : null}
-        </Link>
-      </li>
-    )
-  }
-
+function ServicesMegaMenu({ pathname, onClose }: ServicesMegaMenuProps) {
   return (
-    <li
-      ref={itemRef}
-      className="relative"
-      onMouseEnter={() => {
-        clearCloseTimer()
-        setOpen(true)
-      }}
-      onMouseLeave={scheduleClose}
+    <motion.div
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -6, transition: { duration: 0.12, ease: [0.4, 0, 1, 1] } }}
+      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute left-0 right-0 top-full z-40 border-b border-border bg-white shadow-2xl shadow-black/8"
     >
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-haspopup="menu"
-        onClick={() => setOpen((v) => !v)}
-        className={`relative inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-          active || open
-            ? 'text-blue-primary'
-            : 'text-gray-text hover:text-graphite'
-        }`}
-      >
-        {section.label}
-        <svg
-          aria-hidden
-          viewBox="0 0 12 12"
-          className={`h-3 w-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-        >
-          <path
-            d="M2.5 4.5 6 8l3.5-3.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        {active ? (
-          <span
-            aria-hidden
-            className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-primary"
-          />
-        ) : null}
-      </button>
-
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -4 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -4, transition: { duration: 0.1, ease: [0.4, 0, 1, 1] } }}
-            transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: 'top center' }}
-            className="absolute left-0 top-full z-50 pt-3"
-          >
-            <div
-              role="menu"
-              aria-label={section.label}
-              className="w-72 overflow-hidden rounded-xl border border-border bg-white p-2 shadow-xl"
-            >
-              <Link
-                href={section.href}
-                role="menuitem"
-                className="block rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wide text-gray-text transition-colors hover:text-blue-primary"
-              >
-                Все · {section.label}
-              </Link>
-              <div className="my-1 h-px bg-border" />
-              {section.children?.map((child) => {
-                const childActive = pathname === child.href
-                return (
-                  <Link
-                    key={child.href}
-                    href={child.href}
-                    role="menuitem"
-                    aria-current={childActive ? 'page' : undefined}
-                    className={`group flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
-                      childActive
-                        ? 'bg-light-blue text-blue-primary'
-                        : 'text-graphite hover:bg-light-gray hover:text-blue-primary'
-                    }`}
-                  >
-                    <span className="font-medium">{child.label}</span>
-                    <span
-                      aria-hidden
-                      className="translate-x-0 text-gray-text transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-primary"
-                    >
-                      →
-                    </span>
-                  </Link>
-                )
-              })}
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </li>
+      <div className="container py-8">
+        <div className="grid grid-cols-5 gap-8">
+          {SERVICES_NAV_SECTIONS.map((section) => {
+            const active = isSectionActive(section, pathname)
+            return (
+              <div key={section.href}>
+                <Link
+                  href={section.href}
+                  onClick={onClose}
+                  className={`block text-sm font-semibold transition-colors ${
+                    active ? 'text-blue-primary' : 'text-ink hover:text-blue-primary'
+                  }`}
+                >
+                  {section.label}
+                </Link>
+                {section.children && (
+                  <ul className="mt-3 space-y-2">
+                    {section.children.map((child) => {
+                      const childActive = pathname === child.href
+                      return (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={onClose}
+                            className={`block text-[13px] leading-snug transition-colors ${
+                              childActive
+                                ? 'text-blue-primary'
+                                : 'text-ink-muted hover:text-blue-primary'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </motion.div>
   )
 }
+
+// ── Mobile accordion item ─────────────────────────────────────────────────────
 
 interface MobileAccordionItemProps {
   section: NavSection
@@ -295,13 +197,18 @@ function MobileAccordionItem({
   )
 }
 
+// ── Main Header ───────────────────────────────────────────────────────────────
+
 export function Header() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navBarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMobileOpen(false)
+    setServicesOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -312,11 +219,29 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    if (!servicesOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setServicesOpen(false)
+    }
+    const onClick = (e: MouseEvent) => {
+      if (navBarRef.current && !navBarRef.current.contains(e.target as Node)) {
+        setServicesOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('mousedown', onClick)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('mousedown', onClick)
+    }
+  }, [servicesOpen])
+
+  useEffect(() => {
     if (!mobileOpen) return
     const original = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMobileOpen(false)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
     }
     document.addEventListener('keydown', onKey)
     return () => {
@@ -327,18 +252,22 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
+      {/* Top announcement bar */}
       <div className="bg-blue-primary text-white">
         <div className="container flex min-h-10 items-center justify-center py-2 text-center text-xs sm:text-sm">
           Международная экспертиза · Lean-трансформация · Первый результат за 90 дней
         </div>
       </div>
 
+      {/* Main nav bar */}
       <div
-        className={`border-b border-border bg-white transition-shadow duration-300 ${
+        ref={navBarRef}
+        className={`relative border-b border-border bg-white transition-shadow duration-300 ${
           scrolled ? 'shadow-sm' : ''
         }`}
       >
         <div className="container flex h-[72px] items-center justify-between gap-4 py-4">
+          {/* Logo */}
           <Link
             href="/"
             aria-label="Hattatsu Group — на главную"
@@ -354,19 +283,65 @@ export function Header() {
             />
           </Link>
 
+          {/* Desktop main nav: О компании · Команда · Контакты */}
           <nav aria-label="Основная навигация" className="hidden xl:block">
             <ul className="flex items-center gap-0.5">
-              {NAV_SECTIONS.map((section) => (
-                <DesktopNavItem
-                  key={section.href}
-                  section={section}
-                  pathname={pathname}
-                />
-              ))}
+              {MAIN_NAV_SECTIONS.map((section) => {
+                const active = isSectionActive(section, pathname)
+                return (
+                  <li key={section.href}>
+                    <Link
+                      href={section.href}
+                      aria-current={active ? 'page' : undefined}
+                      className={`relative inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                        active ? 'text-blue-primary' : 'text-gray-text hover:text-graphite'
+                      }`}
+                    >
+                      {section.label}
+                      {active ? (
+                        <span
+                          aria-hidden
+                          className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-primary"
+                        />
+                      ) : null}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
 
-          <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          {/* Desktop right side: Услуги ≡ + CTA buttons */}
+          <div className="hidden shrink-0 items-center gap-3 xl:flex">
+            {/* Услуги burger */}
+            <button
+              type="button"
+              aria-expanded={servicesOpen}
+              aria-haspopup="menu"
+              onClick={() => setServicesOpen((v) => !v)}
+              className={`flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
+                servicesOpen
+                  ? 'border-blue-primary bg-blue-tint text-blue-primary'
+                  : 'border-border text-ink hover:border-blue-primary hover:text-blue-primary'
+              }`}
+            >
+              Услуги
+              <svg
+                aria-hidden
+                viewBox="0 0 18 14"
+                width="16"
+                height="12"
+                fill="none"
+              >
+                <path
+                  d="M1 1h16M1 7h16M1 13h16"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+
             <Link
               href="/diagnostics"
               className="inline-flex items-center justify-center rounded-full bg-blue-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-secondary"
@@ -374,12 +349,13 @@ export function Header() {
               Пройти диагностику
             </Link>
             <MeetingButton
-              label="Записаться"
+              label="Консультация"
               variant="secondary"
               className="!px-5 !py-2.5"
             />
           </div>
 
+          {/* Mobile burger */}
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-blue-primary xl:hidden"
@@ -393,8 +369,19 @@ export function Header() {
             </span>
           </button>
         </div>
+
+        {/* Desktop services mega-menu */}
+        <AnimatePresence>
+          {servicesOpen ? (
+            <ServicesMegaMenu
+              pathname={pathname}
+              onClose={() => setServicesOpen(false)}
+            />
+          ) : null}
+        </AnimatePresence>
       </div>
 
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen ? (
           <div className="fixed inset-0 z-50 xl:hidden">

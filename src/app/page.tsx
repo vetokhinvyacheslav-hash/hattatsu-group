@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
 import { Reveal } from '@/components/ui/Reveal'
-import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import { ClientLogos } from '@/components/ui/ClientLogos'
 import { ROICalculator } from '@/components/ui/ROICalculator'
 import { KaizenCalculator } from '@/components/ui/KaizenCalculator'
@@ -76,17 +75,6 @@ const SERVICES: readonly ServiceItem[] = [
     href: '/marketing',
     image: '/images/service-marketing.png',
   },
-]
-
-interface HeroStat {
-  value: string
-  label: string
-}
-
-const HERO_STATS: readonly HeroStat[] = [
-  { value: '20+', label: 'лет в отрасли' },
-  { value: '6', label: 'стран работы' },
-  { value: '140+', label: 'Kaizen-проектов' },
 ]
 
 const DIAGNOSTIC_BENEFITS: readonly string[] = [
@@ -224,14 +212,22 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              'radial-gradient(ellipse 70% 70% at 80% 50%, #EEF0FF 0%, transparent 65%)',
+              'radial-gradient(ellipse 55% 90% at 10% 50%, #EEF0FF 0%, transparent 70%)',
           }}
         />
-        <div className="container relative">
-          <div className="grid items-center gap-12 py-20 md:min-h-[calc(100dvh-5.5rem)] md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
 
-            {/* Left column */}
-            <div>
+        {/* Full-viewport split: padded content left · image bleeds to right edge */}
+        <div className="relative flex min-h-[calc(100dvh-7rem)] items-stretch">
+
+          {/* Left: content padded to match .container */}
+          <div
+            className="flex flex-1 items-center py-20 lg:py-24"
+            style={{
+              paddingLeft:  'max(20px, calc((100vw - var(--container-max)) / 2 + 32px))',
+              paddingRight: 'clamp(32px, 5vw, 80px)',
+            }}
+          >
+            <div className="max-w-[600px]">
               <div className="mb-8 flex items-center gap-3">
                 <span className="h-px w-8 bg-blue-primary" aria-hidden />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
@@ -240,70 +236,63 @@ export default function HomePage() {
               </div>
 
               <h1 className="h1 text-ink">
-                Операционное превосходство для вашего производства
+                Операционное превосходство для Вашей компании
               </h1>
-              <p className="body-text mt-6 max-w-[500px] text-ink-muted">
-                Выстраиваем производственные системы мирового уровня через
-                Lean-трансформацию, развитие персонала и цифровые решения.
+              <p className="body-text mt-6 max-w-[520px] text-ink-muted">
+                Выстраиваем производственные системы мирового уровня через адаптацию
+                работающих международных систем управления в Вашу компанию, учитывая
+                локальные и культурные особенности, развитие персонала и применяя
+                современные цифровые решения.
               </p>
-
-              <div className="mt-12 grid grid-cols-3 divide-x divide-border">
-                {HERO_STATS.map((stat) => (
-                  <AnimatedCounter
-                    key={stat.label}
-                    value={stat.value}
-                    label={stat.label}
-                    className="pr-5 [&:not(:first-child)]:pl-5 [&>p:first-child]:!text-[2.25rem] [&>p:first-child]:!font-bold [&>p:first-child]:!tracking-tight [&>p:first-child]:!text-ink"
-                  />
-                ))}
-              </div>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <ButtonLink href="/diagnostics">
-                  Диагностика производства
+                  Пройти диагностику
                 </ButtonLink>
-                <ButtonLink href="/consulting" variant="secondary">
-                  Наши решения
+                <ButtonLink href="/contacts" variant="secondary">
+                  Консультация
                 </ButtonLink>
               </div>
             </div>
+          </div>
 
-            {/* Right column */}
-            <div className="relative hidden lg:block">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/hero-main.png"
-                  alt="Эксперты Hattatsu Group на производстве"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="object-cover"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-blue-primary/40 via-transparent to-transparent"
-                />
-              </div>
+          {/* Right: image bleeds to viewport right edge — no border-radius */}
+          <div
+            className="relative hidden flex-shrink-0 lg:block"
+            style={{ width: '46%' }}
+          >
+            <Image
+              src="/images/hero-main.png"
+              alt="Эксперты Hattatsu Group"
+              fill
+              priority
+              sizes="46vw"
+              className="object-cover object-center"
+            />
+            {/* Subtle left-edge blend */}
+            <div
+              aria-hidden
+              className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white/20 to-transparent"
+            />
 
-              {/* Floating diagnostic card */}
-              <div className="absolute -bottom-4 -left-6 w-64 rounded-2xl bg-white p-5 shadow-2xl shadow-blue-primary/10 ring-1 ring-border">
-                <p className="text-sm font-semibold text-ink">
-                  Индекс зрелости производства
-                </p>
-                <p className="mt-1 text-xs leading-relaxed text-ink-muted">
-                  Бесплатная оценка за 5 минут
-                </p>
-                <div className="mt-3 flex items-center gap-2">
-                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-deep">
-                    <div
-                      className="h-full w-[62%] rounded-full bg-blue-primary"
-                      style={{ transition: 'width 1s var(--ease-out)' }}
-                    />
-                  </div>
-                  <span className="text-xs font-semibold text-blue-primary">
-                    62 / 100
-                  </span>
+            {/* Floating diagnostic card */}
+            <div className="absolute bottom-10 -left-6 w-64 rounded-2xl bg-white p-5 shadow-2xl shadow-blue-primary/15 ring-1 ring-border">
+              <p className="text-sm font-semibold text-ink">
+                Индекс зрелости компании
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+                Бесплатная оценка за 5 минут
+              </p>
+              <div className="mt-3 flex items-center gap-2">
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-deep">
+                  <div
+                    className="h-full w-[62%] rounded-full bg-blue-primary"
+                    style={{ transition: 'width 1s var(--ease-out)' }}
+                  />
                 </div>
+                <span className="text-xs font-semibold text-blue-primary">
+                  62 / 100
+                </span>
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@
   --color-blue-tint:      #EEF0FF;
 
   /* Ink / text — blue-tinted neutrals */
-  --color-ink:            #0C1023;
+  --color-ink:            #20252F;
   --color-ink-mid:        #3A4166;
   --color-ink-muted:      #697098;
 
@@ -20,8 +20,8 @@
   --color-surface-deep:   #ECEEF9;
 
   /* Dark */
-  --color-dark:           #0C1023;
-  --color-darker:         #080A14;
+  --color-dark:           #20252F;
+  --color-darker:         #20252F;
 
   /* Border */
   --color-border:         #DDE0EF;
@@ -35,7 +35,7 @@
   --color-error:          #DC2626;
 
   /* Legacy aliases — keep all subpages working */
-  --color-graphite:       #0C1023;
+  --color-graphite:       #20252F;
   --color-gray-text:      #697098;
   --color-light-gray:     #F5F6FB;
   --color-light-blue:     #EEF0FF;
@@ -48,7 +48,7 @@
 }
 
 :root {
-  --container-max: 1280px;
+  --container-max: 1440px;
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
