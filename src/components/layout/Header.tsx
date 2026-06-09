@@ -294,7 +294,7 @@ export function Header() {
                       href={section.href}
                       aria-current={active ? 'page' : undefined}
                       className={`relative inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                        active ? 'text-blue-primary' : 'text-gray-text hover:text-graphite'
+                        active ? 'text-blue-primary' : 'text-ink hover:text-blue-primary'
                       }`}
                     >
                       {section.label}
