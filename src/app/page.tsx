@@ -417,87 +417,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 5: ЦЕЛИ И МИССИЯ ── */}
-      <section className="bg-white">
-        <div className="container section-padding">
-          <div className="mb-14">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-primary" aria-hidden />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
-                Цели и миссия
-              </span>
-            </div>
-            <h2 className="h2 text-ink">
-              Зачем мы существуем
-            </h2>
-          </div>
+      {/* ── SECTIONS 5+6: МИССИЯ + ПОДХОДЫ (3-column split) ── */}
+      <section className="overflow-hidden">
+        <div className="grid lg:grid-cols-[5fr_6fr_5fr]" style={{ minHeight: '80vh' }}>
 
-          <div className="grid gap-6 lg:grid-cols-2">
-            {MISSION_ITEMS.map((item, index) => (
-              <Reveal key={item.eyebrow} as="div" delay={index * 0.1}>
-                <div className="h-full rounded-2xl bg-surface p-8 ring-1 ring-border lg:p-10">
-                  <span className="label text-blue-primary">{item.eyebrow}</span>
-                  <h3 className="mt-4 text-2xl font-semibold leading-snug text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 leading-relaxed text-ink-muted">{item.body}</p>
+          {/* Left: Цель и Миссия */}
+          <div className="flex flex-col justify-center gap-5 bg-white p-8 xl:p-14">
+            {MISSION_ITEMS.map((item) => (
+              <div key={item.eyebrow} className="rounded-2xl border border-border p-6">
+                <div className="mb-3 flex items-center gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-primary">
+                    {item.eyebrow === 'Наша цель' ? (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                      </svg>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-bold text-ink">{item.eyebrow}</h3>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Values strip */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {[
-              { title: 'Честность', text: 'Говорим прямо, даже когда это неудобно. Результаты измеримы.' },
-              { title: 'Практичность', text: 'Внедряем только то, что работает. Без лишней теории.' },
-              { title: 'Партнёрство', text: 'Мы несём ответственность за результат наравне с клиентом.' },
-            ].map((value) => (
-              <div
-                key={value.title}
-                className="rounded-xl border border-border p-6"
-              >
-                <p className="text-base font-semibold text-ink">{value.title}</p>
-                <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">{value.text}</p>
+                <p className="text-[14px] leading-relaxed text-ink-muted">{item.title}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── SECTION 6: УНИКАЛЬНЫЕ ПОДХОДЫ ── */}
-      <section className="bg-surface">
-        <div className="container section-padding">
-          <div className="mb-14">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-primary" aria-hidden />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
-                Методология
-              </span>
-            </div>
-            <SectionHeading
-              title="Уникальные подходы"
-              subtitle="Что отличает Hattatsu Group от стандартных консалтинговых компаний."
+          {/* Center: Photo */}
+          <div className="relative min-h-[380px] lg:min-h-0">
+            <Image
+              src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=900&q=80"
+              alt="Производственный эксперт на предприятии"
+              fill
+              sizes="(min-width: 1024px) 37vw, 100vw"
+              className="object-cover object-center"
             />
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Right: Уникальные подходы */}
+          <div className="flex flex-col justify-center bg-blue-primary p-8 xl:p-12">
+            <h2 className="text-2xl font-bold leading-snug text-white mb-8">
+              Используем уникальные подходы
+            </h2>
             {APPROACHES.map((item, index) => (
-              <Reveal key={item.number} as="div" delay={index * 0.08}>
-                <div className="h-full rounded-2xl bg-white p-7 ring-1 ring-border">
-                  <span className="text-[11px] font-semibold tracking-[0.16em] text-blue-primary">
+              <div key={item.number}>
+                {index > 0 && <div className="my-5 border-t border-white/15" />}
+                <div className="flex gap-4">
+                  <span className="mt-0.5 shrink-0 text-sm font-semibold tabular-nums text-white/40">
                     {item.number}
                   </span>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">
-                    {item.description}
-                  </p>
+                  <div>
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-white/60">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
