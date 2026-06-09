@@ -206,9 +206,8 @@ export default function HomePage() {
   return (
     <>
       {/* ── SECTION 1: HERO ── */}
-      {/* Negative margin pulls the section behind the 72px sticky header so the
-          image fills the full viewport from the very top */}
-      <section className="relative overflow-hidden bg-white">
+      {/* Negative margin pulls the section behind the 72px sticky header */}
+      <section className="relative overflow-hidden bg-white" style={{ marginTop: '-72px' }}>
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -221,12 +220,14 @@ export default function HomePage() {
         {/* Full-viewport split: padded content left · image bleeds to right edge */}
         <div className="relative flex min-h-screen items-stretch">
 
-          {/* Left: content padded to match .container */}
+          {/* Left: content padded to match .container — extra top padding for header */}
           <div
-            className="flex flex-1 items-center py-20 lg:py-24"
+            className="flex flex-1 items-center"
             style={{
-              paddingLeft:  'max(20px, calc((100vw - var(--container-max)) / 2 + 32px))',
-              paddingRight: 'clamp(32px, 5vw, 80px)',
+              paddingTop:    'calc(5rem + 72px)',
+              paddingBottom: '5rem',
+              paddingLeft:   'max(20px, calc((100vw - var(--container-max)) / 2 + 32px))',
+              paddingRight:  'clamp(32px, 5vw, 80px)',
             }}
           >
             <div className="max-w-[600px]">
@@ -277,26 +278,6 @@ export default function HomePage() {
               className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white/20 to-transparent"
             />
 
-            {/* Floating diagnostic card */}
-            <div className="absolute bottom-10 -left-6 w-64 rounded-2xl bg-white p-5 shadow-2xl shadow-blue-primary/15 ring-1 ring-border">
-              <p className="text-sm font-semibold text-ink">
-                Индекс зрелости компании
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-ink-muted">
-                Бесплатная оценка за 5 минут
-              </p>
-              <div className="mt-3 flex items-center gap-2">
-                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-deep">
-                  <div
-                    className="h-full w-[62%] rounded-full bg-blue-primary"
-                    style={{ transition: 'width 1s var(--ease-out)' }}
-                  />
-                </div>
-                <span className="text-xs font-semibold text-blue-primary">
-                  62 / 100
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

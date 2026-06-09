@@ -212,7 +212,7 @@ export function Header() {
   }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -252,19 +252,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Announcement bar */}
-      <div className="bg-blue-primary text-white">
-        <div className="container flex min-h-10 items-center justify-center py-2 text-center text-xs sm:text-sm">
-          Международная экспертиза · Lean-трансформация · Первый результат за 90 дней
-        </div>
-      </div>
-
       {/* Main nav bar */}
       <div
         ref={navBarRef}
-        className={`relative border-b border-border bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-sm' : ''
-        }`}
+        className="relative transition-all duration-500"
+        style={{
+          backgroundColor: scrolled ? '#ffffff' : 'transparent',
+          borderBottom: scrolled ? '1px solid #DDE0EF' : '1px solid transparent',
+          boxShadow: scrolled ? '0 1px 3px 0 rgb(0 0 0 / 0.06)' : 'none',
+        }}
       >
         <div className="container flex h-[72px] items-center justify-between gap-4 py-4">
           {/* Logo */}
