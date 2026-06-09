@@ -102,7 +102,7 @@ export default function GamificationPage() {
         />
         <div className="container section-padding relative">
           <div className="max-w-3xl">
-            <p className="pre-title mb-5 text-orange">
+            <p className="pre-title mb-5 text-white">
               Геймификация и симуляторы
             </p>
             <h1 className="h1">
@@ -171,7 +171,7 @@ export default function GamificationPage() {
                     className="flex items-baseline justify-between gap-4 border-b border-white/15 pb-4 last:border-0 last:pb-0"
                   >
                     <dt className="text-sm text-white/70">{row.metric}</dt>
-                    <dd className="text-base font-semibold text-orange">
+                    <dd className="text-base font-semibold text-white">
                       {row.simulator}
                     </dd>
                   </div>

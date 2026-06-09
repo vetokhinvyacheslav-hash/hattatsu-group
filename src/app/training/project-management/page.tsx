@@ -124,7 +124,7 @@ export default function ProjectManagementTrainingPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Тренинг · Управление проектами
               </p>
               <h1 className="h1">
@@ -221,9 +221,9 @@ export default function ProjectManagementTrainingPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {METHODOLOGIES.map((item, index) => (
             <Reveal key={item.name} delay={index * 0.06}>
-              <article className="h-full rounded-2xl border border-border border-t-4 border-t-orange bg-white p-7 shadow-sm">
+              <article className="h-full rounded-2xl border border-border border-t-4 border-t-blue-primary bg-white p-7 shadow-sm">
                 <h3 className="text-xl font-bold text-graphite">{item.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-orange">
+                <p className="mt-1 text-sm font-semibold text-blue-primary">
                   {item.tagline}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-gray-text">

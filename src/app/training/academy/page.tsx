@@ -134,7 +134,7 @@ export default function AcademyTrainingPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Корпоративная академия
               </p>
               <h1 className="h1">Корпоративная академия Hattatsu</h1>
@@ -189,7 +189,7 @@ export default function AcademyTrainingPage() {
               <article className="flex h-full gap-5 rounded-2xl border border-border bg-white p-7 shadow-sm">
                 <span
                   aria-hidden
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange/15 text-xl font-bold text-orange"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-primary/15 text-xl font-bold text-blue-primary"
                 >
                   ✓
                 </span>
@@ -218,8 +218,8 @@ export default function AcademyTrainingPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {LEVELS.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.06}>
-              <article className="h-full rounded-2xl border border-border border-t-4 border-t-orange bg-white p-7 shadow-sm">
-                <span className="text-sm font-semibold text-orange">
+              <article className="h-full rounded-2xl border border-border border-t-4 border-t-blue-primary bg-white p-7 shadow-sm">
+                <span className="text-sm font-semibold text-blue-primary">
                   {item.level}
                 </span>
                 <h3 className="mt-2 text-xl font-bold text-graphite">

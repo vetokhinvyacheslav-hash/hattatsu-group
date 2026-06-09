@@ -150,7 +150,7 @@ function CaseCard({ study }: CaseCardProps) {
                     className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-graphite outline-none transition-colors focus:border-blue-secondary placeholder:text-gray-text/60"
                   />
                   {error ? (
-                    <p role="alert" className="text-xs font-medium text-orange">
+                    <p role="alert" className="text-xs font-medium text-blue-primary">
                       {error}
                     </p>
                   ) : null}
@@ -171,7 +171,7 @@ export function CasesSection() {
   return (
     <section className="section-padding">
       <div className="container">
-        <p className="pre-title text-orange">Кейсы клиентов</p>
+        <p className="pre-title text-blue-primary">Кейсы клиентов</p>
         <h2 className="h2 mt-2 max-w-2xl text-blue-primary">
           Результаты, которые говорят сами за себя
         </h2>

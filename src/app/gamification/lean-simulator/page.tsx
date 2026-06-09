@@ -109,7 +109,7 @@ export default function LeanSimulatorPage() {
         />
         <div className="container section-padding relative">
           <div className="max-w-3xl">
-            <p className="pre-title mb-5 text-orange">
+            <p className="pre-title mb-5 text-white">
               Геймификация · Тренажёр
             </p>
             <h1 className="h1">Компьютерный тренажёр Lean-производство</h1>
@@ -196,9 +196,9 @@ export default function LeanSimulatorPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {MODES.map((mode, index) => (
             <Reveal key={mode.title} delay={index * 0.08}>
-              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-orange bg-white p-7 shadow-sm">
+              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-blue-primary bg-white p-7 shadow-sm">
                 <h3 className="text-xl font-bold text-graphite">{mode.title}</h3>
-                <p className="mt-1 text-sm font-semibold text-orange">
+                <p className="mt-1 text-sm font-semibold text-blue-primary">
                   {mode.tagline}
                 </p>
                 <ul className="mt-5 space-y-3">

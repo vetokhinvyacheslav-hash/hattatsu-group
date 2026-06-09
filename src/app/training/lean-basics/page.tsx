@@ -79,7 +79,7 @@ export default function LeanBasicsPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Корпоративный тренинг
               </p>
               <h1 className="h1">
@@ -181,7 +181,7 @@ export default function LeanBasicsPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {FORMATS.map((format, index) => (
             <Reveal key={format.title} delay={index * 0.06}>
-              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-orange bg-white p-8 shadow-sm">
+              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-blue-primary bg-white p-8 shadow-sm">
                 <h3 className="text-xl font-bold text-graphite">
                   {format.title}
                 </h3>
@@ -205,7 +205,7 @@ export default function LeanBasicsPage() {
               <article className="flex h-full gap-5 rounded-2xl border border-border bg-white p-7 shadow-sm">
                 <span
                   aria-hidden
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange/15 text-xl font-bold text-orange"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-primary/15 text-xl font-bold text-blue-primary"
                 >
                   ✓
                 </span>

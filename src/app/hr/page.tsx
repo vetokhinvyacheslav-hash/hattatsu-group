@@ -157,7 +157,7 @@ export default function HRPage() {
         />
         <div className="container section-padding relative">
           <div className="max-w-3xl">
-            <p className="pre-title mb-5 text-orange">HR-консалтинг</p>
+            <p className="pre-title mb-5 text-white">HR-консалтинг</p>
             <h1 className="h1">
               Постройте HR-систему, которая работает на вашу стратегию
             </h1>
@@ -225,8 +225,8 @@ export default function HRPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PAIN_POINTS.map((card, index) => (
             <Reveal key={card.number} delay={index * 0.06}>
-              <article className="h-full rounded-2xl border border-border border-l-4 border-l-orange bg-white p-7 shadow-sm">
-                <span className="text-sm font-bold tracking-wide text-orange">
+              <article className="h-full rounded-2xl border border-border border-l-4 border-l-blue-primary bg-white p-7 shadow-sm">
+                <span className="text-sm font-bold tracking-wide text-blue-primary">
                   {card.number}
                 </span>
                 <h3 className="mt-3 text-xl font-bold text-graphite">
@@ -325,7 +325,7 @@ export default function HRPage() {
                 <article className="flex h-full gap-5 rounded-2xl border border-white/15 bg-white/5 p-7">
                   <span
                     aria-hidden
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange/20 text-xl font-bold text-orange"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 text-xl font-bold text-white"
                   >
                     ✓
                   </span>

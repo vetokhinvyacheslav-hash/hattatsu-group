@@ -151,7 +151,7 @@ export function ContactForm({
               <div key={field}>
                 <label htmlFor={fieldId} className={labelClass}>
                   {LABELS[field]}
-                  {required ? <span className="text-orange"> *</span> : null}
+                  {required ? <span className="text-blue-primary"> *</span> : null}
                 </label>
                 <input
                   id={fieldId}
@@ -183,7 +183,7 @@ export function ContactForm({
       ) : null}
 
       {status === 'error' ? (
-        <p role="alert" className="text-sm font-medium text-orange">
+        <p role="alert" className="text-sm font-medium text-blue-primary">
           {errorMessage}
         </p>
       ) : null}

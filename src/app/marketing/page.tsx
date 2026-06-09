@@ -78,7 +78,7 @@ export default function MarketingPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">Маркетинг</p>
+              <p className="pre-title mb-5 text-white">Маркетинг</p>
               <h1 className="h1">Маркетинг для промышленных компаний</h1>
               <p className="body-text mt-6 max-w-xl text-white/70">
                 Упаковка бренда и организация мероприятий, которые усиливают

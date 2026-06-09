@@ -19,7 +19,7 @@ export function SectionHeading({
       {preTitle ? (
         <p
           className={`label mb-4 ${
-            light ? 'text-orange' : 'text-blue-primary'
+            light ? 'text-white' : 'text-blue-primary'
           }`}
         >
           {preTitle}

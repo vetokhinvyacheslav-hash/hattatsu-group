@@ -65,7 +65,7 @@ export default function EventsPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">Мероприятия</p>
+              <p className="pre-title mb-5 text-white">Мероприятия</p>
               <h1 className="h1">Организация корпоративных мероприятий</h1>
               <p className="body-text mt-6 max-w-xl text-white/70">
                 Обучающие конференции, форумы и team building под ключ — от

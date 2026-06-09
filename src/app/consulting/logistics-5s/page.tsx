@@ -89,7 +89,7 @@ export default function Logistics5SPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Организация рабочих мест
               </p>
               <h1 className="h1">
@@ -233,7 +233,7 @@ export default function Logistics5SPage() {
           {RESULTS.map((result, index) => (
             <Reveal key={result.title} delay={index * 0.06}>
               <article className="h-full rounded-2xl border border-border bg-white p-7 shadow-sm">
-                <p className="text-4xl font-extrabold text-orange">
+                <p className="text-4xl font-extrabold text-blue-primary">
                   {result.value}
                 </p>
                 <h3 className="mt-4 text-base font-bold text-graphite">

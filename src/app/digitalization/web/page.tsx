@@ -65,7 +65,7 @@ export default function WebPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Веб-разработка
               </p>
               <h1 className="h1">

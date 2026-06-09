@@ -110,7 +110,7 @@ export default function LmsPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">Hattatsu LMS</p>
+              <p className="pre-title mb-5 text-white">Hattatsu LMS</p>
               <h1 className="h1">
                 Hattatsu LMS — корпоративная платформа обучения
               </h1>

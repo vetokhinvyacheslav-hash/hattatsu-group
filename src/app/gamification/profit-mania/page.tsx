@@ -107,7 +107,7 @@ export default function ProfitManiaPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Геймификация · Деловая игра
               </p>
               <h1 className="h1">ПрибыльМания — микро-MBA за 2 дня</h1>
@@ -241,7 +241,7 @@ export default function ProfitManiaPage() {
             <figure className="mx-auto max-w-3xl text-center">
               <span
                 aria-hidden
-                className="text-6xl font-extrabold leading-none text-orange"
+                className="text-6xl font-extrabold leading-none text-white"
               >
                 &ldquo;
               </span>

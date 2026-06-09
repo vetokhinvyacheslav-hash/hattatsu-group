@@ -189,8 +189,8 @@ function interpret(score: number): Interpretation {
   if (score <= 60) {
     return {
       label: 'Развивающееся производство',
-      textClass: 'text-orange',
-      barClass: 'bg-orange',
+      textClass: 'text-blue-primary',
+      barClass: 'bg-blue-primary',
     }
   }
   if (score <= 80) {
@@ -308,7 +308,7 @@ interface IntroStepProps {
 function IntroStep({ onStart }: IntroStepProps) {
   return (
     <div className="rounded-2xl border border-border bg-white p-8 text-center shadow-sm md:p-12">
-      <p className="pre-title text-orange">Бесплатная диагностика</p>
+      <p className="pre-title text-blue-primary">Бесплатная диагностика</p>
       <h1 className="h2 mt-4 text-blue-primary">
         Диагностика зрелости производства
       </h1>
@@ -499,7 +499,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor={`${baseId}-name`} className={labelClass}>
-              Имя<span className="text-orange"> *</span>
+              Имя<span className="text-blue-primary"> *</span>
             </label>
             <input
               id={`${baseId}-name`}
@@ -513,7 +513,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
           </div>
           <div>
             <label htmlFor={`${baseId}-email`} className={labelClass}>
-              Email<span className="text-orange"> *</span>
+              Email<span className="text-blue-primary"> *</span>
             </label>
             <input
               id={`${baseId}-email`}
@@ -527,7 +527,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
           </div>
           <div>
             <label htmlFor={`${baseId}-phone`} className={labelClass}>
-              Телефон<span className="text-orange"> *</span>
+              Телефон<span className="text-blue-primary"> *</span>
             </label>
             <input
               id={`${baseId}-phone`}
@@ -541,7 +541,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
           </div>
           <div>
             <label htmlFor={`${baseId}-company`} className={labelClass}>
-              Компания<span className="text-orange"> *</span>
+              Компания<span className="text-blue-primary"> *</span>
             </label>
             <input
               id={`${baseId}-company`}
@@ -557,7 +557,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
 
         <div>
           <label htmlFor={`${baseId}-size`} className={labelClass}>
-            Численность<span className="text-orange"> *</span>
+            Численность<span className="text-blue-primary"> *</span>
           </label>
           <select
             id={`${baseId}-size`}
@@ -578,7 +578,7 @@ function FormStep({ initial, onBack, onSubmit }: FormStepProps) {
         </div>
 
         {error ? (
-          <p role="alert" className="text-sm font-medium text-orange">
+          <p role="alert" className="text-sm font-medium text-blue-primary">
             {error}
           </p>
         ) : null}
@@ -620,7 +620,7 @@ function ResultsStep({ scores, onReset }: ResultsStepProps) {
 
   return (
     <div className="rounded-2xl border border-border bg-white p-6 shadow-sm md:p-8">
-      <p className="pre-title text-orange">Результат диагностики</p>
+      <p className="pre-title text-blue-primary">Результат диагностики</p>
       <h2 className="h3 mt-3 text-graphite">
         Ваш Индекс зрелости производства
       </h2>
@@ -680,7 +680,7 @@ function ResultsStep({ scores, onReset }: ResultsStepProps) {
                 key={item.dimension}
                 className="flex flex-col rounded-xl border border-border bg-white p-5"
               >
-                <span className="inline-flex w-fit items-center rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange">
+                <span className="inline-flex w-fit items-center rounded-full bg-blue-primary/10 px-3 py-1 text-xs font-semibold text-blue-primary">
                   {item.score}% · {item.dimension}
                 </span>
                 <p className="mt-3 flex-1 text-sm font-medium text-graphite">

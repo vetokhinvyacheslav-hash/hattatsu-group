@@ -152,11 +152,11 @@ export function KaizenCalculator() {
             value={employees}
             onChange={(e) => setEmployees(Number(e.target.value))}
             aria-valuetext={`${employees} человек`}
-            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-light-gray accent-orange"
+            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-light-gray accent-blue-primary"
           />
           <div className="mt-2 flex items-baseline justify-between text-xs text-gray-text">
             <span>{EMPLOYEES_MIN}</span>
-            <span className="text-base font-bold text-orange">
+            <span className="text-base font-bold text-blue-primary">
               {employees.toLocaleString('ru-RU')} чел.
             </span>
             <span>{EMPLOYEES_MAX.toLocaleString('ru-RU')}</span>
@@ -180,11 +180,11 @@ export function KaizenCalculator() {
             value={salary}
             onChange={(e) => setSalary(Number(e.target.value))}
             aria-valuetext={`${salary.toLocaleString('ru-RU')} рублей`}
-            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-light-gray accent-orange"
+            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-light-gray accent-blue-primary"
           />
           <div className="mt-2 flex items-baseline justify-between text-xs text-gray-text">
             <span>{(SALARY_MIN / 1000).toFixed(0)} тыс.</span>
-            <span className="text-base font-bold text-orange">
+            <span className="text-base font-bold text-blue-primary">
               {(salary / 1000).toFixed(0)} тыс. ₽
             </span>
             <span>{(SALARY_MAX / 1000).toFixed(0)} тыс.</span>
@@ -196,7 +196,7 @@ export function KaizenCalculator() {
           <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
             Рекомендуемое число Kaizen-проектов
           </p>
-          <p className="mt-1 text-2xl font-bold text-orange" aria-live="polite">
+          <p className="mt-1 text-2xl font-bold text-blue-primary" aria-live="polite">
             {result.kaizenProjects} проектов
           </p>
           <p className="mt-1 text-xs text-ink-muted">
@@ -222,7 +222,7 @@ export function KaizenCalculator() {
             <p className="text-xs uppercase tracking-wide text-white/50">
               Скрытые потери/год
             </p>
-            <p className="mt-1 text-xl font-bold text-orange">
+            <p className="mt-1 text-xl font-bold text-white">
               <AnimatedRub value={result.annualLoss} />
             </p>
           </div>
@@ -246,7 +246,7 @@ export function KaizenCalculator() {
             <p className="text-xs uppercase tracking-wide text-white/50">
               Доля сохранённых потерь
             </p>
-            <p className="mt-1 text-xl font-bold text-orange">72%</p>
+            <p className="mt-1 text-xl font-bold text-white">72%</p>
           </div>
         </div>
 

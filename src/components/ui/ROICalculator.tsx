@@ -258,7 +258,7 @@ export function ROICalculator() {
             <p className="text-xs uppercase tracking-wide text-white/50">
               Скрытые потери
             </p>
-            <p className="mt-1 text-2xl font-bold text-orange">
+            <p className="mt-1 text-2xl font-bold text-white">
               <AnimatedNumber value={annualLoss} />
             </p>
           </div>

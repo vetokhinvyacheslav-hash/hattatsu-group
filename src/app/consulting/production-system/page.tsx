@@ -80,7 +80,7 @@ export default function ProductionSystemPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Производственный консалтинг
               </p>
               <h1 className="h1">
@@ -220,7 +220,7 @@ export default function ProductionSystemPage() {
               <article className="flex h-full gap-4 rounded-2xl border border-border bg-white p-6 shadow-sm">
                 <span
                   aria-hidden
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange/15 text-lg font-bold text-orange"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-primary/15 text-lg font-bold text-blue-primary"
                 >
                   ✓
                 </span>
@@ -245,7 +245,7 @@ export default function ProductionSystemPage() {
         </Reveal>
         <Reveal delay={0.05}>
           <article className="mt-12 rounded-2xl border border-border border-l-4 border-l-orange bg-white p-8 shadow-sm md:p-10">
-            <p className="pre-title text-orange">Производство стекла</p>
+            <p className="pre-title text-blue-primary">Производство стекла</p>
             <div className="mt-6 grid gap-8 md:grid-cols-3">
               <div>
                 <h3 className="text-base font-bold text-graphite">Задача</h3>

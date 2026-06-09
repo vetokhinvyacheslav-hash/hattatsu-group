@@ -73,7 +73,7 @@ export default function CustomConsultingPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Индивидуальный консалтинг
               </p>
               <h1 className="h1">
@@ -148,8 +148,8 @@ export default function CustomConsultingPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {FORMATS.map((format, index) => (
             <Reveal key={format.title} delay={index * 0.06}>
-              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-orange bg-white p-8 shadow-sm">
-                <p className="pre-title text-orange">{format.duration}</p>
+              <article className="flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-blue-primary bg-white p-8 shadow-sm">
+                <p className="pre-title text-blue-primary">{format.duration}</p>
                 <h3 className="mt-4 text-xl font-bold text-graphite">
                   {format.title}
                 </h3>

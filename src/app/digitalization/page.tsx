@@ -78,7 +78,7 @@ export default function DigitalizationPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">Цифровизация</p>
+              <p className="pre-title mb-5 text-white">Цифровизация</p>
               <h1 className="h1">Цифровизация производства и HR</h1>
               <p className="body-text mt-6 max-w-xl text-white/70">
                 Hattatsu LMS, корпоративные порталы и веб-решения для

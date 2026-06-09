@@ -107,7 +107,7 @@ export default function LeanCommunicationTrainingPage() {
         <div className="container section-padding relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="max-w-2xl">
-              <p className="pre-title mb-5 text-orange">
+              <p className="pre-title mb-5 text-white">
                 Тренинг · Коммуникация
               </p>
               <h1 className="h1">Коммуникация в Lean-проектах</h1>
@@ -158,8 +158,8 @@ export default function LeanCommunicationTrainingPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PAIN_POINTS.map((card, index) => (
             <Reveal key={card.number} delay={index * 0.06}>
-              <article className="h-full rounded-2xl border border-border border-l-4 border-l-orange bg-white p-7 shadow-sm">
-                <span className="text-sm font-bold tracking-wide text-orange">
+              <article className="h-full rounded-2xl border border-border border-l-4 border-l-blue-primary bg-white p-7 shadow-sm">
+                <span className="text-sm font-bold tracking-wide text-blue-primary">
                   {card.number}
                 </span>
                 <h3 className="mt-3 text-xl font-bold text-graphite">
@@ -217,7 +217,7 @@ export default function LeanCommunicationTrainingPage() {
               <article className="flex h-full gap-5 rounded-2xl border border-border bg-white p-7 shadow-sm">
                 <span
                   aria-hidden
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange/15 text-xl font-bold text-orange"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-primary/15 text-xl font-bold text-blue-primary"
                 >
                   ✓
                 </span>
