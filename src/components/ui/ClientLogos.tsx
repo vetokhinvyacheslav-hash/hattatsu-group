@@ -22,7 +22,7 @@ export function ClientLogos() {
       <div className="container section-padding">
         <div className="max-w-3xl">
           <h2 className="h2 text-graphite">
-            Производственные предприятия России и СНГ
+            Работаем с крупными международными и российскими компаниями
           </h2>
         </div>
 

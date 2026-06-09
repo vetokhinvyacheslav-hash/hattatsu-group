@@ -7,13 +7,17 @@ import { Reveal } from '@/components/ui/Reveal'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import { ClientLogos } from '@/components/ui/ClientLogos'
 import { ROICalculator } from '@/components/ui/ROICalculator'
+import { KaizenCalculator } from '@/components/ui/KaizenCalculator'
 import { CasesSection } from '@/components/ui/CasesSection'
+import { WorldMap } from '@/components/ui/WorldMap'
 
 export const metadata: Metadata = {
   title: 'Hattatsu Group — Lean-трансформация производственных предприятий',
   description:
     'Hattatsu Group — международная группа экспертов. Lean-консалтинг, корпоративное обучение, цифровизация и геймификация производственных процессов.',
 }
+
+// ── Data ─────────────────────────────────────────────────────────────────────
 
 interface ServiceItem {
   number: string
@@ -97,13 +101,18 @@ const DIAGNOSTIC_BENEFITS: readonly string[] = [
   'Персональные рекомендации от сертифицированного эксперта',
 ]
 
-const GEO_CITIES: readonly string[] = [
-  'Москва',
-  'Санкт-Петербург',
-  'Екатеринбург',
-  'Казань',
-  'Новосибирск',
-  'Страны СНГ',
+interface GeoCountry {
+  name: string
+  detail: string
+}
+
+const GEO_COUNTRIES: readonly GeoCountry[] = [
+  { name: 'Россия',   detail: 'Lean-трансформация · 100+ предприятий' },
+  { name: 'Беларусь', detail: 'Производственный консалтинг' },
+  { name: 'Польша',   detail: 'HR-консалтинг · Корпобучение' },
+  { name: 'Франция',  detail: 'Kaizen-программы' },
+  { name: 'Бельгия',  detail: 'Операционная эффективность' },
+  { name: 'Япония',   detail: 'Lean Production · Обмен опытом' },
 ]
 
 interface TeamMember {
@@ -162,6 +171,60 @@ const TEAM: readonly TeamMember[] = [
       'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
   },
 ]
+
+interface ApproachItem {
+  number: string
+  title: string
+  description: string
+}
+
+const APPROACHES: readonly ApproachItem[] = [
+  {
+    number: '01',
+    title: 'Диагностика перед действием',
+    description:
+      'Начинаем с глубокого анализа текущего состояния: картирование потоков, интервью с командой, измерение ключевых показателей. Решения основаны на данных, а не предположениях.',
+  },
+  {
+    number: '02',
+    title: 'Передача знаний внутри',
+    description:
+      'Каждый проект — это программа обучения для ваших сотрудников. Мы уходим, когда команда способна развивать улучшения самостоятельно.',
+  },
+  {
+    number: '03',
+    title: 'Измеримые результаты',
+    description:
+      'Фиксируем базовые показатели до старта и отслеживаем их ежемесячно. Первые измеримые изменения — в течение 90 дней от начала работы.',
+  },
+  {
+    number: '04',
+    title: 'Международный опыт',
+    description:
+      'Команда принесла лучшие практики с производств Бельгии, Франции, Польши и Японии. Адаптируем мировые стандарты под российскую производственную реальность.',
+  },
+]
+
+interface MissionItem {
+  eyebrow: string
+  title: string
+  body: string
+}
+
+const MISSION_ITEMS: readonly MissionItem[] = [
+  {
+    eyebrow: 'Миссия',
+    title: 'Поднять эффективность российской промышленности',
+    body: 'Мы убеждены: производственные предприятия России способны конкурировать на мировом уровне. Наша задача — дать им инструменты, знания и системы для этого.',
+  },
+  {
+    eyebrow: 'Видение',
+    title: 'Лидер Lean-трансформации в Евразии',
+    body: 'К 2030 году — партнёр для 500 производственных компаний от Москвы до Владивостока, применяющих принципы непрерывного совершенствования как часть корпоративной ДНК.',
+  },
+]
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
@@ -259,7 +322,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: SERVICES ── */}
+      {/* ── SECTION 2: SERVICES (6 equal cards, 2×3) ── */}
       <section className="bg-surface">
         <div className="container section-padding">
           <div className="mb-14 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -270,83 +333,324 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service, index) => {
-              const isFeatured = index === 0
-              return (
-                <Reveal
-                  key={service.title}
-                  as="article"
-                  delay={(index % 3) * 0.07}
-                  className={`h-full${isFeatured ? ' sm:col-span-2 lg:col-span-2' : ''}`}
+            {SERVICES.map((service, index) => (
+              <Reveal
+                key={service.title}
+                as="article"
+                delay={(index % 3) * 0.07}
+                className="h-full"
+              >
+                <ButtonLink
+                  href={service.href}
+                  variant="ghost"
+                  className="!block !h-full !rounded-2xl !p-0"
                 >
-                  <ButtonLink
-                    href={service.href}
-                    variant="ghost"
-                    className="!block !h-full !rounded-2xl !p-0"
-                  >
-                    <span
-                      className={`flex h-full rounded-2xl bg-white ring-1 ring-border transition-all duration-200 hover:shadow-lg hover:shadow-blue-primary/5 hover:ring-blue-tint ${
-                        isFeatured ? 'flex-col md:flex-row' : 'flex-col'
-                      }`}
-                    >
-                      {/* Image */}
-                      <span
-                        className={`relative overflow-hidden ${
-                          isFeatured
-                            ? 'h-56 shrink-0 rounded-t-2xl md:h-auto md:w-[44%] md:rounded-l-2xl md:rounded-tr-none'
-                            : 'h-48 rounded-t-2xl'
-                        }`}
-                      >
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          sizes={
-                            isFeatured
-                              ? '(min-width: 1024px) 38vw, (min-width: 640px) 90vw, 100vw'
-                              : '(min-width: 1024px) 26vw, (min-width: 640px) 45vw, 100vw'
-                          }
-                          className="object-cover"
-                        />
-                      </span>
+                  <span className="flex h-full flex-col rounded-2xl bg-white ring-1 ring-border transition-all duration-200 hover:shadow-lg hover:shadow-blue-primary/5 hover:ring-blue-tint">
+                    {/* Image */}
+                    <span className="relative h-48 overflow-hidden rounded-t-2xl">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                        className="object-cover"
+                      />
+                    </span>
 
-                      {/* Content */}
-                      <span
-                        className={`flex flex-1 flex-col justify-between ${isFeatured ? 'p-8 md:p-10' : 'p-7'}`}
-                      >
-                        <span>
-                          <span className="text-[10px] font-semibold tracking-[0.16em] text-ink-muted">
-                            {service.number}
-                          </span>
-                          <span
-                            className={`mt-2 block font-semibold text-ink ${isFeatured ? 'text-2xl' : 'text-lg'}`}
-                          >
-                            {service.title}
-                          </span>
-                          <span className="mt-3 block text-[14px] leading-relaxed text-ink-muted">
-                            {service.description}
-                          </span>
+                    {/* Content */}
+                    <span className="flex flex-1 flex-col justify-between p-7">
+                      <span>
+                        <span className="text-[10px] font-semibold tracking-[0.16em] text-ink-muted">
+                          {service.number}
                         </span>
-                        <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-primary">
-                          Подробнее{' '}
-                          <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
-                            →
-                          </span>
+                        <span className="mt-2 block text-lg font-semibold text-ink">
+                          {service.title}
+                        </span>
+                        <span className="mt-3 block text-[14px] leading-relaxed text-ink-muted">
+                          {service.description}
+                        </span>
+                      </span>
+                      <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-primary">
+                        Подробнее{' '}
+                        <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                          →
                         </span>
                       </span>
                     </span>
-                  </ButtonLink>
-                </Reveal>
-              )
-            })}
+                  </span>
+                </ButtonLink>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 3: CLIENT LOGOS ── */}
+      {/* ── SECTION 3: О КОМПАНИИ ── */}
+      <section className="bg-white">
+        <div className="container section-padding">
+          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+            {/* Left: heading + text */}
+            <div>
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-px w-8 bg-orange" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange">
+                  О компании
+                </span>
+              </div>
+              <h2 className="h2 text-ink">
+                Международная группа практиков, а не теоретиков
+              </h2>
+              <p className="body-text mt-5 text-ink-muted">
+                Hattatsu Group основана экспертами с опытом работы на производственных
+                предприятиях России, Европы и Азии. Мы не просто консультируем — мы
+                внедряем изменения вместе с вашей командой, берём на себя ответственность
+                за результат и уходим только тогда, когда система работает самостоятельно.
+              </p>
+              <p className="body-text mt-4 text-ink-muted">
+                За 20 лет мы прошли путь от цеховых мастеров до партнёров международных
+                корпораций. Этот опыт позволяет нам видеть проблемы производства изнутри
+                и предлагать решения, которые действительно работают в российских реалиях.
+              </p>
+              <div className="mt-8">
+                <ButtonLink href="/about" variant="secondary">
+                  Подробнее о компании
+                </ButtonLink>
+              </div>
+            </div>
+
+            {/* Right: stats grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: '20+', label: 'лет экспертизы', detail: 'С 2004 года на рынке' },
+                { value: '140+', label: 'Kaizen-проектов', detail: 'В 15+ отраслях' },
+                { value: '6', label: 'стран присутствия', detail: 'Россия, ЕС, Япония' },
+                { value: '97%', label: 'клиентов возвращаются', detail: 'Долгосрочные партнёрства' },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl bg-surface p-6 ring-1 ring-border"
+                >
+                  <p className="text-3xl font-extrabold tracking-tight text-blue-primary">
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-ink">{item.label}</p>
+                  <p className="mt-1 text-xs text-ink-muted">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: GEOGRAPHY ── */}
+      <section className="bg-ink text-white">
+        <div className="container section-padding">
+          <div className="mb-12">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-orange" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange">
+                География экспертизы
+              </span>
+            </div>
+            <h2 className="h2 text-white">
+              География опыта команды
+            </h2>
+            <p className="body-text mt-4 max-w-xl text-white/55">
+              Команда работала на предприятиях шести стран, привезя лучшие практики
+              и адаптировав их под российские реалии.
+            </p>
+          </div>
+
+          {/* World map */}
+          <div className="mt-10">
+            <WorldMap />
+          </div>
+
+          {/* Country list */}
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {GEO_COUNTRIES.map((country) => (
+              <li
+                key={country.name}
+                className="flex items-start gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/8"
+              >
+                <span
+                  aria-hidden
+                  className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-orange"
+                />
+                <span>
+                  <span className="block text-sm font-semibold text-white">
+                    {country.name}
+                  </span>
+                  <span className="block text-xs text-white/50">
+                    {country.detail}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: ЦЕЛИ И МИССИЯ ── */}
+      <section className="bg-white">
+        <div className="container section-padding">
+          <div className="mb-14">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-blue-primary" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
+                Цели и миссия
+              </span>
+            </div>
+            <h2 className="h2 text-ink">
+              Зачем мы существуем
+            </h2>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {MISSION_ITEMS.map((item, index) => (
+              <Reveal key={item.eyebrow} as="div" delay={index * 0.1}>
+                <div className="h-full rounded-2xl bg-surface p-8 ring-1 ring-border lg:p-10">
+                  <span className="label text-blue-primary">{item.eyebrow}</span>
+                  <h3 className="mt-4 text-2xl font-semibold leading-snug text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-relaxed text-ink-muted">{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Values strip */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              { title: 'Честность', text: 'Говорим прямо, даже когда это неудобно. Результаты измеримы.' },
+              { title: 'Практичность', text: 'Внедряем только то, что работает. Без лишней теории.' },
+              { title: 'Партнёрство', text: 'Мы несём ответственность за результат наравне с клиентом.' },
+            ].map((value) => (
+              <div
+                key={value.title}
+                className="rounded-xl border border-border p-6"
+              >
+                <p className="text-base font-semibold text-ink">{value.title}</p>
+                <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">{value.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: УНИКАЛЬНЫЕ ПОДХОДЫ ── */}
+      <section className="bg-surface">
+        <div className="container section-padding">
+          <div className="mb-14">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-orange" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange">
+                Методология
+              </span>
+            </div>
+            <SectionHeading
+              title="Уникальные подходы"
+              subtitle="Что отличает Hattatsu Group от стандартных консалтинговых компаний."
+            />
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {APPROACHES.map((item, index) => (
+              <Reveal key={item.number} as="div" delay={index * 0.08}>
+                <div className="h-full rounded-2xl bg-white p-7 ring-1 ring-border">
+                  <span className="text-[11px] font-semibold tracking-[0.16em] text-orange">
+                    {item.number}
+                  </span>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: ROI CALCULATOR ── */}
+      <section className="bg-white section-padding">
+        <div className="container">
+          <SectionHeading
+            title="Сколько стоят потери вашего производства?"
+            subtitle="Рассчитайте потенциальный эффект от внедрения Lean за 30 секунд."
+          />
+          <div className="mt-12">
+            <ROICalculator />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 8: KAIZEN CALCULATOR ── */}
+      <section className="bg-surface section-padding">
+        <div className="container">
+          <SectionHeading
+            title="Потенциал Kaizen-программы"
+            subtitle="Узнайте, сколько Kaizen-проектов нужно вашему предприятию и каков их экономический эффект."
+          />
+          <div className="mt-12">
+            <KaizenCalculator />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 9: CLIENT LOGOS ── */}
       <ClientLogos />
 
-      {/* ── SECTION 4: DIAGNOSTIC CTA ── */}
+      {/* ── SECTION 10: TEAM ── */}
+      <section className="bg-white">
+        <div className="container section-padding">
+          <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading
+              title="Эксперты-практики с производственным опытом"
+              subtitle="Консультанты с 10+ годами практики на реальных предприятиях России и мира."
+            />
+            <ButtonLink href="/team" variant="secondary" className="shrink-0">
+              Вся команда →
+            </ButtonLink>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {TEAM.map((member, index) => (
+              <Reveal
+                key={member.image}
+                as="article"
+                delay={(index % 4) * 0.06}
+              >
+                <div className="group overflow-hidden rounded-xl bg-surface ring-1 ring-border transition-all duration-200 hover:ring-blue-tint">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={`${member.name}, ${member.role}`}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="font-semibold text-ink">{member.name}</p>
+                    <p className="mt-1 text-[13px] leading-snug text-ink-muted">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 11: CASES ── */}
+      <CasesSection />
+
+      {/* ── SECTION 12: DIAGNOSTIC CTA ── */}
       <section className="relative overflow-hidden bg-blue-primary">
         <div
           aria-hidden
@@ -395,93 +699,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 5: ROI CALCULATOR ── */}
-      <section className="bg-white section-padding">
-        <div className="container">
-          <SectionHeading
-            title="Сколько стоят потери вашего производства?"
-            subtitle="Рассчитайте потенциальный эффект от внедрения Lean за 30 секунд."
-          />
-          <div className="mt-12">
-            <ROICalculator />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 6: CASES ── */}
-      <CasesSection />
-
-      {/* ── SECTION 7: GEOGRAPHY ── */}
-      <section className="bg-ink text-white">
-        <div className="container section-padding">
-          <div className="grid items-start gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
-            <div>
-              <h2 className="h2 text-white">
-                Работаем по всей России и странам СНГ
-              </h2>
-              <p className="body-text mt-4 max-w-lg text-white/55">
-                Очные проекты, онлайн-форматы и гибридные программы — для
-                предприятий от 50 до 5 000 сотрудников.
-              </p>
-            </div>
-            <ul className="flex flex-wrap gap-2 lg:max-w-[280px]">
-              {GEO_CITIES.map((city) => (
-                <li
-                  key={city}
-                  className="rounded-full border border-white/12 px-4 py-2 text-sm font-medium text-white/70"
-                >
-                  {city}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 8: TEAM ── */}
-      <section className="bg-white">
-        <div className="container section-padding">
-          <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading
-              title="Эксперты-практики с производственным опытом"
-              subtitle="Консультанты с 10+ годами практики на реальных предприятиях России и мира."
-            />
-            <ButtonLink href="/team" variant="secondary" className="shrink-0">
-              Вся команда →
-            </ButtonLink>
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {TEAM.map((member, index) => (
-              <Reveal
-                key={member.image}
-                as="article"
-                delay={(index % 4) * 0.06}
-              >
-                <div className="group overflow-hidden rounded-xl bg-surface ring-1 ring-border transition-all duration-200 hover:ring-blue-tint">
-                  <div className="relative aspect-[4/5] w-full overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={`${member.name}, ${member.role}`}
-                      fill
-                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="font-semibold text-ink">{member.name}</p>
-                    <p className="mt-1 text-[13px] leading-snug text-ink-muted">
-                      {member.role}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 9: FINAL CTA ── */}
+      {/* ── SECTION 13: FINAL CTA ── */}
       <section className="bg-blue-primary">
         <div className="container section-padding">
           <div className="grid items-center gap-12 lg:grid-cols-2">
