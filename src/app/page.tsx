@@ -34,8 +34,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Построение производственных систем на базе Lean Manufacturing, 5S и Kaizen. Снижение потерь на 20–35% в течение первого года работы.',
     href: '/consulting',
-    image:
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-consulting.png',
   },
   {
     number: '02',
@@ -43,8 +42,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Системное построение HR-функции: рекрутинг, оценка, развитие персонала и кадровый резерв. Семь ключевых элементов эффективной HR-системы.',
     href: '/hr',
-    image:
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-hr.png',
   },
   {
     number: '03',
@@ -52,8 +50,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Программы развития для производственных команд: Lean Production, управление проектами, операционные коммуникации.',
     href: '/training',
-    image:
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-training.png',
   },
   {
     number: '04',
@@ -61,8 +58,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Lean-симулятор и бизнес-игра ПрибыльМания. Вовлечение сотрудников и передача знаний без отрыва от производственного цикла.',
     href: '/gamification',
-    image:
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-gamification.png',
   },
   {
     number: '05',
@@ -70,8 +66,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Hattatsu LMS и веб-платформы для корпоративного обучения. Цифровая инфраструктура под ваши операционные задачи.',
     href: '/digitalization',
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-digitalization.png',
   },
   {
     number: '06',
@@ -79,8 +74,7 @@ const SERVICES: readonly ServiceItem[] = [
     description:
       'Упаковка бренда и организация профессиональных событий для промышленных компаний. От стратегии до реализации.',
     href: '/marketing',
-    image:
-      'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=640&q=85',
+    image: '/images/service-marketing.png',
   },
 ]
 
@@ -181,27 +175,21 @@ interface ApproachItem {
 const APPROACHES: readonly ApproachItem[] = [
   {
     number: '01',
-    title: 'Диагностика перед действием',
+    title: 'Научность',
     description:
-      'Начинаем с глубокого анализа текущего состояния: картирование потоков, интервью с командой, измерение ключевых показателей. Решения основаны на данных, а не предположениях.',
+      'Выстраивание системы управления и бизнес-процессов на основе анализа данных и конкретных кейсов.',
   },
   {
     number: '02',
-    title: 'Передача знаний внутри',
+    title: 'Адаптация',
     description:
-      'Каждый проект — это программа обучения для ваших сотрудников. Мы уходим, когда команда способна развивать улучшения самостоятельно.',
+      'Внедрение изменений на производстве и в бизнес-структурах с учётом локальных особенностей.',
   },
   {
     number: '03',
-    title: 'Измеримые результаты',
+    title: 'Синергия',
     description:
-      'Фиксируем базовые показатели до старта и отслеживаем их ежемесячно. Первые измеримые изменения — в течение 90 дней от начала работы.',
-  },
-  {
-    number: '04',
-    title: 'Международный опыт',
-    description:
-      'Команда принесла лучшие практики с производств Бельгии, Франции, Польши и Японии. Адаптируем мировые стандарты под российскую производственную реальность.',
+      'Связь научного менеджмента и адаптивности позволяют эффективно использовать международный опыт в конкретной компании.',
   },
 ]
 
@@ -213,14 +201,14 @@ interface MissionItem {
 
 const MISSION_ITEMS: readonly MissionItem[] = [
   {
-    eyebrow: 'Миссия',
-    title: 'Поднять эффективность российской промышленности',
-    body: 'Мы убеждены: производственные предприятия России способны конкурировать на мировом уровне. Наша задача — дать им инструменты, знания и системы для этого.',
+    eyebrow: 'Наша цель',
+    title: 'Стать лучшей консалтинговой производственной экосистемой в России и СНГ',
+    body: 'Мы строим долгосрочные партнёрства с предприятиями, которые хотят работать на уровне мировых стандартов — системно, измеримо и с устойчивым результатом.',
   },
   {
-    eyebrow: 'Видение',
-    title: 'Лидер Lean-трансформации в Евразии',
-    body: 'К 2030 году — партнёр для 500 производственных компаний от Москвы до Владивостока, применяющих принципы непрерывного совершенствования как часть корпоративной ДНК.',
+    eyebrow: 'Наша миссия',
+    title: 'Выявляем скрытый потенциал производств и трансформируем его в успех',
+    body: 'Выявляем скрытый потенциал производственных предприятий и трансформируем его в измеримый успех, внедряя культуру непрерывных улучшений и научный подход к управлению.',
   },
 ]
 
@@ -284,7 +272,7 @@ export default function HomePage() {
             <div className="relative hidden lg:block">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=85"
+                  src="/images/hero-main.png"
                   alt="Эксперты Hattatsu Group на производстве"
                   fill
                   priority
@@ -555,7 +543,7 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {APPROACHES.map((item, index) => (
               <Reveal key={item.number} as="div" delay={index * 0.08}>
                 <div className="h-full rounded-2xl bg-white p-7 ring-1 ring-border">
