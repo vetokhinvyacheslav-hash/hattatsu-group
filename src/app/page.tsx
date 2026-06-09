@@ -387,34 +387,33 @@ export default function HomePage() {
       </section>
 
       {/* ── SECTION 4: GEOGRAPHY ── */}
-      <section className="bg-white">
-        <div className="container section-padding">
-          <div className="mb-12">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-primary" aria-hidden />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
-                География экспертизы
-              </span>
-            </div>
-            <h2 className="h2 text-ink">
-              География опыта команды
-            </h2>
-            <p className="body-text mt-4 max-w-2xl text-ink-muted">
-              Опыт и знания наших экспертов собраны из лучших управленческих практик,
-              применяемых в корпорациях по всему миру.
-            </p>
+      <section className="bg-white overflow-hidden">
+        {/* Heading — constrained */}
+        <div className="container pt-16 pb-10 lg:pt-24 lg:pb-12">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-8 bg-blue-primary" aria-hidden />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
+              География экспертизы
+            </span>
           </div>
+          <h2 className="h2 text-ink">
+            География опыта команды
+          </h2>
+          <p className="body-text mt-4 max-w-2xl text-ink-muted">
+            Опыт и знания наших экспертов собраны из лучших управленческих практик,
+            применяемых в корпорациях по всему миру.
+          </p>
+        </div>
 
-          {/* Map image */}
-          <div className="relative w-full">
-            <Image
-              src="/map/%D0%9A%D0%B0%D1%80%D1%82%D0%B0.png"
-              alt="Карта географии экспертизы Hattatsu Group"
-              width={1280}
-              height={640}
-              className="w-full object-contain"
-            />
-          </div>
+        {/* Map — full viewport width */}
+        <div className="relative w-screen left-1/2 -translate-x-1/2">
+          <Image
+            src="/map/%D0%9A%D0%B0%D1%80%D1%82%D0%B0.png"
+            alt="Карта географии экспертизы Hattatsu Group"
+            width={1920}
+            height={900}
+            className="w-full object-cover"
+          />
         </div>
       </section>
 
