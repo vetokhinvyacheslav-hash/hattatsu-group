@@ -1,49 +1,66 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand palette — Hattatsu Group */
-  --color-white: #FFFFFF;
-  --color-light-gray: #F5F5F8;
-  --color-light-blue: #EEEEF8;
-  --color-graphite: #20252F;
-  --color-gray-text: #5A5A72;
-  --color-blue-primary: #110F56;
-  --color-blue-secondary: #2B27A0;
-  --color-border: #E2E2EC;
-  --color-dark: #20252F;
-  --color-darker: #0D1018;
-  --color-orange: #F08A24;
-  --color-success: #22C55E;
-  --color-error: #EF4444;
+  /* ── Hattatsu Group Design Tokens ── */
 
-  --font-sans: var(--font-montserrat, 'Montserrat'), 'Inter', sans-serif;
+  /* Blue brand family */
+  --color-blue-primary:   #110F56;
+  --color-blue-secondary: #1D1A8A;
+  --color-blue-accent:    #3B30E8;
+  --color-blue-tint:      #EEF0FF;
 
+  /* Ink / text — blue-tinted neutrals */
+  --color-ink:            #0C1023;
+  --color-ink-mid:        #3A4166;
+  --color-ink-muted:      #697098;
+
+  /* Surfaces */
+  --color-white:          #FFFFFF;
+  --color-surface:        #F5F6FB;
+  --color-surface-deep:   #ECEEF9;
+
+  /* Dark */
+  --color-dark:           #0C1023;
+  --color-darker:         #080A14;
+
+  /* Border */
+  --color-border:         #DDE0EF;
+
+  /* Orange accent */
+  --color-orange:         #F08A24;
+  --color-orange-hover:   #E07B18;
+
+  /* Feedback */
+  --color-success:        #16A34A;
+  --color-error:          #DC2626;
+
+  /* Legacy aliases — keep all subpages working */
+  --color-graphite:       #0C1023;
+  --color-gray-text:      #697098;
+  --color-light-gray:     #F5F6FB;
+  --color-light-blue:     #EEF0FF;
+
+  /* Typography */
+  --font-sans: var(--font-plex, 'IBM Plex Sans'), 'Helvetica Neue', Arial, sans-serif;
+
+  /* Breakpoints */
   --breakpoint-xs: 480px;
 }
 
 :root {
   --container-max: 1280px;
-  /* Strong easing curves (Emil Kowalski / easing.dev) */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -52,92 +69,96 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-white);
-  color: var(--color-graphite);
+  background-color: #ffffff;
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  font-feature-settings: "cv02", "cv03", "cv04";
 }
 
+/* ── Layout ── */
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 .section-padding {
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 104px;
+  padding-bottom: 104px;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 }
 
-/* Typography */
+/* ── Typography ── */
 .h1 {
-  font-size: clamp(38px, 6vw, 72px);
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(38px, 5.2vw, 64px);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .h2 {
-  font-size: clamp(30px, 4.2vw, 52px);
+  font-size: clamp(28px, 3.6vw, 48px);
   line-height: 1.1;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 .h3 {
-  font-size: clamp(22px, 2.6vw, 32px);
-  line-height: 1.2;
-  font-weight: 700;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
 .body-text {
-  font-size: clamp(15px, 1.3vw, 18px);
-  line-height: 1.65;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.72;
 }
 
-.pre-title {
-  font-size: 13px;
+/* Label — use sparingly, not on every section */
+.label {
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-blue-secondary);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Legacy — keep for backward compat */
+.pre-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-blue-primary);
 }
-::-webkit-scrollbar-track {
-  background: var(--color-light-gray);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
-}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-surface); }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
 
 .tabs-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-.tabs-scroll::-webkit-scrollbar {
-  display: none;
-}
+.tabs-scroll::-webkit-scrollbar { display: none; }

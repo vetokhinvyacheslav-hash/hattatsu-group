@@ -329,7 +329,7 @@ export function Header() {
     <header className="sticky top-0 z-50">
       <div className="bg-blue-primary text-white">
         <div className="container flex min-h-10 items-center justify-center py-2 text-center text-xs sm:text-sm">
-          Обсудите развитие производственной системы с экспертом Hattatsu Group
+          Международная экспертиза · Lean-трансформация · Первый результат за 90 дней
         </div>
       </div>
 

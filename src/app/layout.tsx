@@ -1,30 +1,31 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MeetingModalProvider } from '@/components/ui/MeetingModal'
 import { StickyCTA } from '@/components/ui/StickyCTA'
 
-const montserrat = Montserrat({
+const ibmPlex = IBM_Plex_Sans({
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-montserrat',
+  variable: '--font-plex',
 })
 
 export const metadata: Metadata = {
-  title: 'Hattatsu Group — экосистема развития производственных предприятий',
+  title: 'Hattatsu Group — Lean-трансформация производственных предприятий',
   description:
-    'Hattatsu Group — международная экосистема экспертов для развития производственных предприятий через консалтинг, обучение, цифровизацию и культуру непрерывных улучшений.',
+    'Hattatsu Group — международная группа экспертов по развитию производственных систем через Lean-консалтинг, обучение, цифровизацию и культуру непрерывных улучшений.',
   keywords: [
     'Hattatsu Group',
-    'консалтинг',
-    'Lean',
+    'Lean консалтинг',
     'бережливое производство',
-    'обучение',
-    'цифровизация',
     'производственные системы',
+    'операционная эффективность',
+    'Kaizen',
+    'HR консалтинг',
+    'цифровизация производства',
   ],
 }
 
@@ -34,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru" className={montserrat.variable}>
-      <body className="bg-white text-graphite">
+    <html lang="ru" className={ibmPlex.variable}>
+      <body className="bg-white antialiased">
         <MeetingModalProvider>
           <Header />
           <main>{children}</main>

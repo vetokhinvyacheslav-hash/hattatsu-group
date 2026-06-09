@@ -10,12 +10,13 @@ import { ROICalculator } from '@/components/ui/ROICalculator'
 import { CasesSection } from '@/components/ui/CasesSection'
 
 export const metadata: Metadata = {
-  title: 'Hattatsu Group — Развитие производственных предприятий',
+  title: 'Hattatsu Group — Lean-трансформация производственных предприятий',
   description:
-    'Консалтинг, обучение и цифровизация производства. Помогаем предприятиям выйти на новый уровень эффективности через Lean, HR-системы и технологии.',
+    'Hattatsu Group — международная группа экспертов. Lean-консалтинг, корпоративное обучение, цифровизация и геймификация производственных процессов.',
 }
 
 interface ServiceItem {
+  number: string
   title: string
   description: string
   href: string
@@ -24,52 +25,58 @@ interface ServiceItem {
 
 const SERVICES: readonly ServiceItem[] = [
   {
+    number: '01',
     title: 'Производственный консалтинг',
     description:
-      'Построение производственных систем на базе Lean, 5S, Kaizen. Снижение потерь до 30%.',
+      'Построение производственных систем на базе Lean Manufacturing, 5S и Kaizen. Снижение потерь на 20–35% в течение первого года работы.',
     href: '/consulting',
     image:
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=640&q=85',
   },
   {
+    number: '02',
     title: 'HR-консалтинг',
     description:
-      'Построение HR-системы: от рекрутинга до кадрового резерва. 7 ключевых элементов.',
+      'Системное построение HR-функции: рекрутинг, оценка, развитие персонала и кадровый резерв. Семь ключевых элементов эффективной HR-системы.',
     href: '/hr',
     image:
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=640&q=85',
   },
   {
-    title: 'Обучение и развитие',
+    number: '03',
+    title: 'Корпоративное обучение',
     description:
-      'Корпоративные программы: Lean Production, управление проектами, коммуникации.',
+      'Программы развития для производственных команд: Lean Production, управление проектами, операционные коммуникации.',
     href: '/training',
     image:
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=640&q=85',
   },
   {
-    title: 'Геймификация',
+    number: '04',
+    title: 'Геймификация процессов',
     description:
-      'Lean-симулятор и бизнес-игра ПрибыльМания. Обучение без отрыва от производства.',
+      'Lean-симулятор и бизнес-игра ПрибыльМания. Вовлечение сотрудников и передача знаний без отрыва от производственного цикла.',
     href: '/gamification',
     image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=640&q=85',
   },
   {
+    number: '05',
     title: 'Цифровизация',
     description:
-      'Hattatsu LMS и web-разработка. Корпоративная академия в цифровом формате.',
+      'Hattatsu LMS и веб-платформы для корпоративного обучения. Цифровая инфраструктура под ваши операционные задачи.',
     href: '/digitalization',
     image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=85',
   },
   {
-    title: 'Маркетинг',
+    number: '06',
+    title: 'Маркетинг и бренд',
     description:
-      'Упаковка бренда и организация событий для промышленных компаний.',
+      'Упаковка бренда и организация профессиональных событий для промышленных компаний. От стратегии до реализации.',
     href: '/marketing',
     image:
-      'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=640&q=85',
   },
 ]
 
@@ -79,15 +86,15 @@ interface HeroStat {
 }
 
 const HERO_STATS: readonly HeroStat[] = [
-  { value: '20+', label: 'лет экспертизы' },
-  { value: '6', label: 'стран присутствия' },
+  { value: '20+', label: 'лет в отрасли' },
+  { value: '6', label: 'стран работы' },
   { value: '140+', label: 'Kaizen-проектов' },
 ]
 
 const DIAGNOSTIC_BENEFITS: readonly string[] = [
-  'Radar-карта по 5 направлениям',
-  'Приоритеты для развития',
-  'Индивидуальные рекомендации',
+  'Radar-карта по 5 ключевым направлениям производства',
+  'Приоритеты и конкретные точки роста для вашего предприятия',
+  'Персональные рекомендации от сертифицированного эксперта',
 ]
 
 const GEO_CITIES: readonly string[] = [
@@ -96,7 +103,7 @@ const GEO_CITIES: readonly string[] = [
   'Екатеринбург',
   'Казань',
   'Новосибирск',
-  'СНГ',
+  'Страны СНГ',
 ]
 
 interface TeamMember {
@@ -108,123 +115,161 @@ interface TeamMember {
 const TEAM: readonly TeamMember[] = [
   {
     name: 'Джанунц Смбат',
-    role: 'Основатель, Lean 18+ лет',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+    role: 'Основатель · Lean Production 18 лет',
+    image:
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Горшенин Семён',
-    role: 'Эксперт Kaizen & Lean Production',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    role: 'Kaizen & Lean Production',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Ездаков Максим',
     role: 'Операционная эффективность',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+    image:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Терещенко Владислав',
-    role: 'Цифровое обучение & симуляторы',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+    role: 'Цифровое обучение · Симуляторы',
+    image:
+      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Киреев Артур',
-    role: 'Маркетинг & развитие бизнеса',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    role: 'Маркетинг · Развитие бизнеса',
+    image:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Черных Лариса',
-    role: 'HR-эксперт, CIPD UK',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    role: 'HR-эксперт · CIPD UK',
+    image:
+      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Ветохин Вячеслав',
-    role: 'Визуализация & бизнес-коммуникации',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    role: 'Визуализация · Коммуникации',
+    image:
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
   },
   {
     name: 'Арустамян Арсен',
-    role: 'Fullstack веб-разработка',
-    image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
+    role: 'Fullstack-разработка',
+    image:
+      'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
   },
 ]
-
 
 export default function HomePage() {
   return (
     <>
-      {/* SECTION 1 — Hero */}
+      {/* ── SECTION 1: HERO ── */}
       <section className="relative overflow-hidden bg-white">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_0%_100%,var(--color-light-blue,#E8EAFF)_0%,transparent_70%)] opacity-60"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 70% 70% at 80% 50%, #EEF0FF 0%, transparent 65%)',
+          }}
         />
         <div className="container relative">
-          <div className="grid items-center gap-12 py-16 md:min-h-[calc(100vh-5rem)] md:py-20 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 py-20 md:min-h-[calc(100dvh-5.5rem)] md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+
             {/* Left column */}
             <div>
-              <span className="inline-flex w-fit rounded-full bg-blue-primary/10 px-4 py-1.5 text-sm font-semibold text-blue-primary">
-                Производственный консалтинг
-              </span>
-              <h1 className="h1 mt-6 text-graphite">
-                Вывод производства на новый уровень эффективности
+              <div className="mb-8 flex items-center gap-3">
+                <span className="h-px w-8 bg-blue-primary" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
+                  Международная консалтинговая группа
+                </span>
+              </div>
+
+              <h1 className="h1 text-ink">
+                Операционное превосходство для вашего производства
               </h1>
-              <p className="body-text mt-6 max-w-xl text-gray-text">
-                Hattatsu Group — экосистема экспертов для развития предприятий
-                через Lean-консалтинг, обучение, цифровизацию и культуру
-                непрерывных улучшений.
+              <p className="body-text mt-6 max-w-[500px] text-ink-muted">
+                Выстраиваем производственные системы мирового уровня через
+                Lean-трансформацию, развитие персонала и цифровые решения.
               </p>
 
-              <dl className="mt-10 grid grid-cols-3 gap-6 border-y border-border py-6">
+              <div className="mt-12 grid grid-cols-3 divide-x divide-border">
                 {HERO_STATS.map((stat) => (
                   <AnimatedCounter
                     key={stat.label}
                     value={stat.value}
                     label={stat.label}
-                    className="[&>p:first-child]:!text-3xl [&>p:first-child]:md:!text-4xl"
+                    className="pr-5 [&:not(:first-child)]:pl-5 [&>p:first-child]:!text-[2.25rem] [&>p:first-child]:!font-bold [&>p:first-child]:!tracking-tight [&>p:first-child]:!text-ink"
                   />
                 ))}
-              </dl>
+              </div>
 
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-10 flex flex-wrap items-center gap-3">
                 <ButtonLink href="/diagnostics">
-                  Пройти диагностику производства
+                  Диагностика производства
                 </ButtonLink>
                 <ButtonLink href="/consulting" variant="secondary">
-                  Посмотреть услуги
+                  Наши решения
                 </ButtonLink>
               </div>
             </div>
 
             {/* Right column */}
             <div className="relative hidden lg:block">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-2xl shadow-blue-primary/10">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80"
+                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=85"
                   alt="Эксперты Hattatsu Group на производстве"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   className="object-cover"
                 />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-blue-primary/40 via-transparent to-transparent"
+                />
               </div>
-              <div className="absolute bottom-6 left-6 max-w-[15rem] rounded-2xl bg-white p-5 shadow-xl">
-                <p className="text-base font-bold text-graphite">
-                  Диагностика зрелости
+
+              {/* Floating diagnostic card */}
+              <div className="absolute -bottom-4 -left-6 w-64 rounded-2xl bg-white p-5 shadow-2xl shadow-blue-primary/10 ring-1 ring-border">
+                <p className="text-sm font-semibold text-ink">
+                  Индекс зрелости производства
                 </p>
-                <p className="mt-1 text-sm text-gray-text">Старт за 5 минут</p>
+                <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+                  Бесплатная оценка за 5 минут
+                </p>
+                <div className="mt-3 flex items-center gap-2">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-deep">
+                    <div
+                      className="h-full w-[62%] rounded-full bg-blue-primary"
+                      style={{ transition: 'width 1s var(--ease-out)' }}
+                    />
+                  </div>
+                  <span className="text-xs font-semibold text-blue-primary">
+                    62 / 100
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — Services grid */}
-      <section className="bg-light-gray">
+      {/* ── SECTION 2: SERVICES ── */}
+      <section className="bg-surface">
         <div className="container section-padding">
-          <SectionHeading
-            title="Полная экосистема для роста производства"
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mb-14 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              title="Полная экосистема для роста производства"
+              subtitle="Шесть направлений экспертизы — единый партнёр для вашего предприятия."
+            />
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service, index) => {
               const isFeatured = index === 0
               return (
@@ -240,15 +285,16 @@ export default function HomePage() {
                     className="!block !h-full !rounded-2xl !p-0"
                   >
                     <span
-                      className={`flex h-full rounded-2xl border border-border bg-white shadow-sm transition-shadow duration-200 hover:shadow-md ${
+                      className={`flex h-full rounded-2xl bg-white ring-1 ring-border transition-all duration-200 hover:shadow-lg hover:shadow-blue-primary/5 hover:ring-blue-tint ${
                         isFeatured ? 'flex-col md:flex-row' : 'flex-col'
                       }`}
                     >
+                      {/* Image */}
                       <span
                         className={`relative overflow-hidden ${
                           isFeatured
-                            ? 'h-52 shrink-0 rounded-t-2xl md:h-auto md:w-5/12 md:rounded-l-2xl md:rounded-tr-none'
-                            : 'mb-0 block h-44 rounded-t-2xl'
+                            ? 'h-56 shrink-0 rounded-t-2xl md:h-auto md:w-[44%] md:rounded-l-2xl md:rounded-tr-none'
+                            : 'h-48 rounded-t-2xl'
                         }`}
                       >
                         <Image
@@ -257,26 +303,35 @@ export default function HomePage() {
                           fill
                           sizes={
                             isFeatured
-                              ? '(min-width: 1024px) 40vw, (min-width: 640px) 90vw, 100vw'
-                              : '(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw'
+                              ? '(min-width: 1024px) 38vw, (min-width: 640px) 90vw, 100vw'
+                              : '(min-width: 1024px) 26vw, (min-width: 640px) 45vw, 100vw'
                           }
                           className="object-cover"
                         />
                       </span>
+
+                      {/* Content */}
                       <span
-                        className={`flex flex-1 flex-col ${isFeatured ? 'p-8' : 'p-7'}`}
+                        className={`flex flex-1 flex-col justify-between ${isFeatured ? 'p-8 md:p-10' : 'p-7'}`}
                       >
-                        <span
-                          className={`font-bold text-graphite ${isFeatured ? 'text-2xl' : 'text-lg'}`}
-                        >
-                          {service.title}
+                        <span>
+                          <span className="text-[10px] font-semibold tracking-[0.16em] text-ink-muted">
+                            {service.number}
+                          </span>
+                          <span
+                            className={`mt-2 block font-semibold text-ink ${isFeatured ? 'text-2xl' : 'text-lg'}`}
+                          >
+                            {service.title}
+                          </span>
+                          <span className="mt-3 block text-[14px] leading-relaxed text-ink-muted">
+                            {service.description}
+                          </span>
                         </span>
-                        <span className="mt-3 flex-1 text-sm leading-relaxed text-gray-text">
-                          {service.description}
-                        </span>
-                        <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blue-primary">
-                          Подробнее
-                          <span aria-hidden>→</span>
+                        <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-primary">
+                          Подробнее{' '}
+                          <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                            →
+                          </span>
                         </span>
                       </span>
                     </span>
@@ -288,61 +343,64 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 3 — Client logos marquee */}
+      {/* ── SECTION 3: CLIENT LOGOS ── */}
       <ClientLogos />
 
-      {/* SECTION 4 — Diagnostic CTA banner */}
+      {/* ── SECTION 4: DIAGNOSTIC CTA ── */}
       <section className="relative overflow-hidden bg-blue-primary">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:28px_28px]"
+          className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:32px_32px]"
         />
         <div className="container section-padding relative">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
             <div>
+              <p className="label mb-5 text-white/50">Диагностика</p>
               <h2 className="h2 text-white">
-                Узнайте уровень зрелости вашего производства
+                Узнайте реальный уровень зрелости вашего производства
               </h2>
-              <p className="body-text mt-5 text-white/80">
-                7 вопросов · 5 минут · Персональный индекс + рекомендации
-                эксперта
+              <p className="body-text mt-5 text-white/70">
+                7 вопросов · 5 минут · Персональный индекс и рекомендации эксперта
               </p>
             </div>
             <div>
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {DIAGNOSTIC_BENEFITS.map((benefit) => (
-                  <li key={benefit} className="flex gap-3 text-white">
+                  <li key={benefit} className="flex gap-4">
                     <span
                       aria-hidden
-                      className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange text-sm font-bold text-white"
+                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/30 text-[10px] font-bold text-white"
                     >
                       ✓
                     </span>
-                    <span className="text-base leading-relaxed">{benefit}</span>
+                    <span className="text-[15px] leading-relaxed text-white/80">
+                      {benefit}
+                    </span>
                   </li>
                 ))}
               </ul>
               <div className="mt-8">
                 <ButtonLink
                   href="/diagnostics"
-                  className="!bg-orange !text-white hover:!bg-orange/90"
+                  className="!bg-orange !text-white hover:!bg-orange-hover"
                 >
-                  Начать диагностику бесплатно
+                  Начать диагностику — бесплатно
                 </ButtonLink>
               </div>
-              <p className="mt-4 text-sm text-white/60">
-                Результаты сразу · Без обязательств · Бесплатно
+              <p className="mt-4 text-xs tracking-wide text-white/40">
+                Результаты мгновенно · Без обязательств
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 5 — ROI Calculator */}
-      <section className="bg-light-gray section-padding">
+      {/* ── SECTION 5: ROI CALCULATOR ── */}
+      <section className="bg-white section-padding">
         <div className="container">
           <SectionHeading
-            title="Сколько теряет ваше производство?"
+            title="Сколько стоят потери вашего производства?"
+            subtitle="Рассчитайте потенциальный эффект от внедрения Lean за 30 секунд."
           />
           <div className="mt-12">
             <ROICalculator />
@@ -350,22 +408,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 6 — Cases section */}
+      {/* ── SECTION 6: CASES ── */}
       <CasesSection />
 
-      {/* SECTION 7 — Geography */}
-      <section className="bg-dark text-white">
+      {/* ── SECTION 7: GEOGRAPHY ── */}
+      <section className="bg-ink text-white">
         <div className="container section-padding">
-          <div className="grid items-end gap-8 lg:grid-cols-2">
-            <SectionHeading
-              title="Работаем по всей России и СНГ"
-              light
-            />
-            <ul className="flex flex-wrap gap-3 pb-1">
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <div>
+              <h2 className="h2 text-white">
+                Работаем по всей России и странам СНГ
+              </h2>
+              <p className="body-text mt-4 max-w-lg text-white/55">
+                Очные проекты, онлайн-форматы и гибридные программы — для
+                предприятий от 50 до 5 000 сотрудников.
+              </p>
+            </div>
+            <ul className="flex flex-wrap gap-2 lg:max-w-[280px]">
               {GEO_CITIES.map((city) => (
                 <li
                   key={city}
-                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white"
+                  className="rounded-full border border-white/12 px-4 py-2 text-sm font-medium text-white/70"
                 >
                   {city}
                 </li>
@@ -375,42 +438,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 8 — Team preview */}
+      {/* ── SECTION 8: TEAM ── */}
       <section className="bg-white">
         <div className="container section-padding">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
               title="Эксперты-практики с производственным опытом"
-              subtitle="Консультанты с 10+ годами практики на реальных предприятиях"
+              subtitle="Консультанты с 10+ годами практики на реальных предприятиях России и мира."
             />
-            <ButtonLink href="/team" variant="secondary">
+            <ButtonLink href="/team" variant="secondary" className="shrink-0">
               Вся команда →
             </ButtonLink>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {TEAM.map((member, index) => (
               <Reveal
                 key={member.image}
                 as="article"
                 delay={(index % 4) * 0.06}
-                className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"
               >
-                <div className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={`${member.name}, ${member.role}`}
-                    fill
-                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                    className="object-cover object-left"
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white to-transparent"
-                  />
-                </div>
-                <div className="p-5">
-                  <p className="font-bold text-graphite">{member.name}</p>
-                  <p className="mt-1 text-sm text-gray-text">{member.role}</p>
+                <div className="group overflow-hidden rounded-xl bg-surface ring-1 ring-border transition-all duration-200 hover:ring-blue-tint">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={`${member.name}, ${member.role}`}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="font-semibold text-ink">{member.name}</p>
+                    <p className="mt-1 text-[13px] leading-snug text-ink-muted">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -418,36 +481,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 9 — Final CTA */}
+      {/* ── SECTION 9: FINAL CTA ── */}
       <section className="bg-blue-primary">
         <div className="container section-padding">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
+              <p className="label mb-5 text-white/40">Начало работы</p>
               <h2 className="h2 text-white">
-                Готовы начать развитие производства?
+                Готовы вывести производство на новый уровень?
               </h2>
-              <p className="body-text mt-5 text-white/70">
-                Бесплатная диагностика за 5 минут или личная встреча с
-                экспертом по вашим задачам.
+              <p className="body-text mt-5 text-white/65">
+                Пройдите бесплатную диагностику или запишитесь на встречу с
+                экспертом — обсудим задачи и предложим оптимальный маршрут.
               </p>
             </div>
-            <div className="flex flex-col gap-4 lg:items-start">
+            <div className="flex flex-col items-start gap-4">
               <ButtonLink
                 href="/diagnostics"
-                className="!bg-orange !text-white hover:!bg-orange/90 !px-8"
+                className="!bg-orange !text-white hover:!bg-orange-hover"
               >
                 Пройти диагностику производства
               </ButtonLink>
               <ButtonLink
                 href="/contacts"
                 variant="secondary"
-                className="!border-white/30 !text-white hover:!border-white hover:!bg-white/10 !px-8"
+                className="!border-white/25 !text-white hover:!border-white/50 hover:!bg-white/10"
               >
                 Записаться на встречу →
               </ButtonLink>
               <a
-                href="/contacts"
-                className="mt-1 text-sm text-white/50 transition-colors hover:text-white/80"
+                href="/documents"
+                className="text-sm text-white/40 transition-colors hover:text-white/70"
               >
                 Скачать презентацию компании
               </a>
