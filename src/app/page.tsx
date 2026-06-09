@@ -408,7 +408,7 @@ export default function HomePage() {
         {/* Map — full viewport width */}
         <div className="relative w-screen left-1/2 -translate-x-1/2">
           <Image
-            src="/map/%D0%9A%D0%B0%D1%80%D1%82%D0%B0.png"
+            src="/map/%D0%9A%D0%B0%D1%80%D1%82%D0%B0.svg"
             alt="Карта географии экспертизы Hattatsu Group"
             width={1920}
             height={900}
