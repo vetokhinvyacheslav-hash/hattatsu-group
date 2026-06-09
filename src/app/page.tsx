@@ -9,6 +9,8 @@ import { ROICalculator } from '@/components/ui/ROICalculator'
 import { KaizenCalculator } from '@/components/ui/KaizenCalculator'
 import { CasesSection } from '@/components/ui/CasesSection'
 import { WorldMap } from '@/components/ui/WorldMap'
+import { AboutSection } from '@/components/ui/AboutSection'
+import { MissionSection } from '@/components/ui/MissionSection'
 
 export const metadata: Metadata = {
   title: 'Hattatsu Group — Lean-трансформация производственных предприятий',
@@ -147,51 +149,6 @@ const TEAM: readonly TeamMember[] = [
   },
 ]
 
-interface ApproachItem {
-  number: string
-  title: string
-  description: string
-}
-
-const APPROACHES: readonly ApproachItem[] = [
-  {
-    number: '01',
-    title: 'Научность',
-    description:
-      'Выстраивание системы управления и бизнес-процессов на основе анализа данных и конкретных кейсов.',
-  },
-  {
-    number: '02',
-    title: 'Адаптация',
-    description:
-      'Внедрение изменений на производстве и в бизнес-структурах с учётом локальных особенностей.',
-  },
-  {
-    number: '03',
-    title: 'Синергия',
-    description:
-      'Связь научного менеджмента и адаптивности позволяют эффективно использовать международный опыт в конкретной компании.',
-  },
-]
-
-interface MissionItem {
-  eyebrow: string
-  title: string
-  body: string
-}
-
-const MISSION_ITEMS: readonly MissionItem[] = [
-  {
-    eyebrow: 'Наша цель',
-    title: 'Стать лучшей консалтинговой производственной экосистемой в России и СНГ',
-    body: 'Мы строим долгосрочные партнёрства с предприятиями, которые хотят работать на уровне мировых стандартов — системно, измеримо и с устойчивым результатом.',
-  },
-  {
-    eyebrow: 'Наша миссия',
-    title: 'Выявляем скрытый потенциал производств и трансформируем его в успех',
-    body: 'Выявляем скрытый потенциал производственных предприятий и трансформируем его в измеримый успех, внедряя культуру непрерывных улучшений и научный подход к управлению.',
-  },
-]
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -326,65 +283,7 @@ export default function HomePage() {
       </section>
 
       {/* ── SECTION 3: О КОМПАНИИ ── */}
-      <section className="bg-dark">
-        <div className="container section-padding">
-          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-            {/* Left: heading + text */}
-            <div>
-              <div className="mb-6 flex items-center gap-3">
-                <span className="h-px w-8 bg-white/40" aria-hidden />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
-                  О компании
-                </span>
-              </div>
-              <h2 className="h2 text-white">
-                Международная группа практиков, а не теоретиков
-              </h2>
-              <p className="body-text mt-5 text-white/65">
-                Hattatsu Group основана экспертами с опытом работы на производственных
-                предприятиях России, Европы и Азии. Мы не просто консультируем — мы
-                внедряем изменения вместе с вашей командой, берём на себя ответственность
-                за результат и уходим только тогда, когда система работает самостоятельно.
-              </p>
-              <p className="body-text mt-4 text-white/65">
-                За 20 лет мы прошли путь от цеховых мастеров до партнёров международных
-                корпораций. Этот опыт позволяет нам видеть проблемы производства изнутри
-                и предлагать решения, которые действительно работают в российских реалиях.
-              </p>
-              <div className="mt-8">
-                <ButtonLink
-                  href="/about"
-                  variant="secondary"
-                  className="!border-white/25 !text-white hover:!border-white/50 hover:!bg-white/10"
-                >
-                  Подробнее о компании
-                </ButtonLink>
-              </div>
-            </div>
-
-            {/* Right: stats grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: '20+', label: 'лет экспертизы', detail: 'С 2004 года на рынке' },
-                { value: '140+', label: 'Kaizen-проектов', detail: 'В 15+ отраслях' },
-                { value: '6', label: 'стран присутствия', detail: 'Россия, ЕС, Япония' },
-                { value: '97%', label: 'клиентов возвращаются', detail: 'Долгосрочные партнёрства' },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl bg-white/8 p-6 ring-1 ring-white/10"
-                >
-                  <p className="text-3xl font-extrabold tracking-tight text-white">
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-sm font-semibold text-white">{item.label}</p>
-                  <p className="mt-1 text-xs text-white/45">{item.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* ── SECTION 4: GEOGRAPHY ── */}
       <section className="bg-white overflow-hidden">
@@ -417,73 +316,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTIONS 5+6: МИССИЯ + ПОДХОДЫ (3-column split) ── */}
-      <section className="overflow-hidden">
-        <div className="grid lg:grid-cols-[5fr_6fr_5fr]" style={{ minHeight: '80vh' }}>
-
-          {/* Left: Цель и Миссия */}
-          <div className="flex flex-col justify-center gap-5 bg-white p-8 xl:p-14">
-            {MISSION_ITEMS.map((item) => (
-              <div key={item.eyebrow} className="rounded-2xl border border-border p-6">
-                <div className="mb-3 flex items-center gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-primary">
-                    {item.eyebrow === 'Наша цель' ? (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="12" r="6"/>
-                        <circle cx="12" cy="12" r="2"/>
-                      </svg>
-                    ) : (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                      </svg>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold text-ink">{item.eyebrow}</h3>
-                </div>
-                <p className="text-[14px] leading-relaxed text-ink-muted">{item.title}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Center: Photo */}
-          <div className="relative min-h-[380px] lg:min-h-0">
-            <Image
-              src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=900&q=80"
-              alt="Производственный эксперт на предприятии"
-              fill
-              sizes="(min-width: 1024px) 37vw, 100vw"
-              className="object-cover object-center"
-            />
-          </div>
-
-          {/* Right: Уникальные подходы */}
-          <div className="flex flex-col justify-center bg-blue-primary p-8 xl:p-12">
-            <h2 className="text-2xl font-bold leading-snug text-white mb-8">
-              Используем уникальные подходы
-            </h2>
-            {APPROACHES.map((item, index) => (
-              <div key={item.number}>
-                {index > 0 && <div className="my-5 border-t border-white/15" />}
-                <div className="flex gap-4">
-                  <span className="mt-0.5 shrink-0 text-sm font-semibold tabular-nums text-white/40">
-                    {item.number}
-                  </span>
-                  <div>
-                    <h3 className="font-bold text-white">{item.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/60">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      {/* ── SECTIONS 5+6: МИССИЯ + ПОДХОДЫ ── */}
+      <MissionSection />
 
       {/* ── SECTION 7: ROI CALCULATOR ── */}
       <section className="bg-white section-padding">
