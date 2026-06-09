@@ -315,11 +315,14 @@ export function Header() {
               aria-expanded={servicesOpen}
               aria-haspopup="menu"
               onClick={() => setServicesOpen((v) => !v)}
-              className={`flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
+              className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-500"
+              style={
                 servicesOpen
-                  ? 'border-blue-primary bg-blue-tint text-blue-primary'
-                  : 'border-border text-ink hover:border-blue-primary hover:text-blue-primary'
-              }`}
+                  ? { borderColor: '#110F56', backgroundColor: '#EEF0FF', color: '#110F56' }
+                  : scrolled
+                    ? { borderColor: '#110F56', color: '#110F56' }
+                    : { borderColor: 'white', color: 'white' }
+              }
             >
               Услуги
               <svg
@@ -340,14 +343,16 @@ export function Header() {
 
             <Link
               href="/diagnostics"
-              className="inline-flex items-center justify-center rounded-full bg-blue-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-secondary"
+              className="inline-flex items-center justify-center rounded-full bg-blue-primary px-5 py-2.5 text-sm font-semibold text-white transition-all duration-500 hover:bg-blue-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-secondary"
+              style={!scrolled ? { boxShadow: '0 0 0 2px white' } : undefined}
             >
               Пройти диагностику
             </Link>
             <MeetingButton
               label="Консультация"
               variant="secondary"
-              className="!px-5 !py-2.5"
+              className="!px-5 !py-2.5 transition-all duration-500"
+              style={!scrolled ? { borderColor: 'white', color: 'white' } : undefined}
             />
           </div>
 

@@ -6,6 +6,7 @@ import {
   useContext,
   useMemo,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from 'react'
 import { Modal } from './Modal'
@@ -52,16 +53,18 @@ interface MeetingButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'ghost'
   className?: string
+  style?: CSSProperties
 }
 
 export function MeetingButton({
   label = 'Заказать встречу',
   variant = 'primary',
   className = '',
+  style,
 }: MeetingButtonProps) {
   const { open } = useMeetingModal()
   return (
-    <Button variant={variant} className={className} onClick={open}>
+    <Button variant={variant} className={className} style={style} onClick={open}>
       {label}
     </Button>
   )
