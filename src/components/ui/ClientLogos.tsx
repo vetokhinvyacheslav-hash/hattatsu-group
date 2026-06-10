@@ -16,7 +16,10 @@ const PARTNERS = [
   { name: 'Стеклолюкс', file: '%D0%A1%D1%82%D0%B5%D0%BA%D0%BB%D0%BE%D0%BB%D1%8E%D0%BA%D1%81.png' },
 ] as const
 
-type Partner = typeof PARTNERS[number]
+const PARTNERS_ROW1 = PARTNERS.slice(0, 6)
+const PARTNERS_ROW2 = PARTNERS.slice(6)
+
+type Partner = (typeof PARTNERS)[number]
 
 // CSS filter to convert any logo image to #110F56 (dark navy)
 const LOGO_FILTER =
@@ -31,7 +34,7 @@ function LogoCard({ partner }: { partner: Partner }) {
         alt={partner.name}
         width={128}
         height={56}
-        className="max-h-[44px] w-auto max-w-[110px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-80"
+        className="max-h-[44px] w-auto max-w-[110px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-60"
         style={{ filter: LOGO_FILTER }}
       />
     </div>
@@ -41,9 +44,10 @@ function LogoCard({ partner }: { partner: Partner }) {
 interface RowProps {
   direction: 'left' | 'right'
   duration: number
+  partners: readonly Partner[]
 }
 
-function MarqueeRow({ direction, duration }: RowProps) {
+function MarqueeRow({ direction, duration, partners }: RowProps) {
   const anim = direction === 'left' ? 'hgLogoLeft' : 'hgLogoRight'
   return (
     <div
@@ -59,10 +63,10 @@ function MarqueeRow({ direction, duration }: RowProps) {
         className="hg-logo-row flex w-max"
         style={{ animation: `${anim} ${duration}s linear infinite` }}
       >
-        {PARTNERS.map((p) => (
+        {partners.map((p) => (
           <LogoCard key={p.name} partner={p} />
         ))}
-        {PARTNERS.map((p) => (
+        {partners.map((p) => (
           <LogoCard key={`dup-${p.name}`} partner={p} />
         ))}
       </div>
@@ -88,53 +92,32 @@ export function ClientLogos() {
       `}</style>
 
       {/* Header */}
-      <div className="container mb-12">
-        <div className="flex items-end justify-between gap-8">
-          <div>
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-6 bg-blue-primary/30" aria-hidden />
-              <span
-                className="text-[11px] font-semibold uppercase tracking-[0.16em]"
-                style={{ color: '#110F56', opacity: 0.5 }}
-              >
-                Партнёры
-              </span>
-            </div>
-            <h2 className="h2 text-ink">
-              Наш опыт растёт с каждым проектом
-            </h2>
-          </div>
-
-          {/* Counter */}
-          <div className="hidden shrink-0 flex-col items-end sm:flex">
-            <span
-              className="text-5xl font-extrabold leading-none tabular-nums"
-              style={{ color: '#110F56' }}
-            >
-              13
-            </span>
-            <span
-              className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: '#110F56', opacity: 0.4 }}
-            >
-              партнёров
-            </span>
-          </div>
+      <div className="container mb-20">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-px w-6 bg-blue-primary/30" aria-hidden />
+          <span
+            className="text-[11px] font-semibold uppercase tracking-[0.16em]"
+            style={{ color: '#110F56', opacity: 0.5 }}
+          >
+            Партнёры
+          </span>
         </div>
+        <h2 className="h2 text-ink">
+          Наш опыт растёт с каждым проектом
+        </h2>
       </div>
 
       {/* Carousels */}
       <div className="space-y-2">
-        <MarqueeRow direction="left" duration={36} />
+        <MarqueeRow direction="left" duration={30} partners={PARTNERS_ROW1} />
 
-        {/* Thin divider */}
         <div
           className="mx-auto w-16 border-t"
           style={{ borderColor: 'rgba(17,15,86,0.1)' }}
           aria-hidden
         />
 
-        <MarqueeRow direction="right" duration={48} />
+        <MarqueeRow direction="right" duration={38} partners={PARTNERS_ROW2} />
       </div>
     </section>
   )

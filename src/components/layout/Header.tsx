@@ -354,13 +354,8 @@ export function Header() {
             </Link>
             <MeetingButton
               label="Консультация"
-              variant="secondary"
-              className="!px-5 !py-2.5 transition-all duration-500 hover:!bg-transparent"
-              style={
-                scrolled
-                  ? { borderColor: '#110F56', color: '#110F56' }
-                  : { borderColor: 'white', color: 'white' }
-              }
+              variant="primary"
+              className="!px-5 !py-2.5"
             />
           </div>
 
