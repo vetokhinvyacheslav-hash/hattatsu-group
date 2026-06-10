@@ -1,40 +1,21 @@
 'use client'
 
-const PARTNERS = [
-  { name: 'AGC',        file: 'AGC.png' },
-  { name: 'AIG',        file: 'AIG.png' },
-  { name: 'AXA',        file: 'AXApng.png' },
-  { name: 'Futuruss',   file: 'Futuruss.png' },
-  { name: 'RGC',        file: 'RGC.png' },
-  { name: 'NFG',        file: 'NFG.png' },
-  { name: 'NordGlass',  file: 'NordGlass.png' },
-  { name: 'Sibglass',   file: 'Sibglass.png' },
-  { name: 'UPT',        file: 'UPT.png' },
-  { name: '2mood',      file: '2mood.png' },
-  { name: 'КПИ',        file: '%D0%9A%D0%9F%D0%98.png' },
-  { name: 'Скайгласс',  file: '%D0%A1%D0%BA%D0%B0%D0%B9%D0%B3%D0%BB%D0%B0%D1%81%D1%81.png' },
-  { name: 'Стеклолюкс', file: '%D0%A1%D1%82%D0%B5%D0%BA%D0%BB%D0%BE%D0%BB%D1%8E%D0%BA%D1%81.png' },
-] as const
-
-const PARTNERS_ROW1 = PARTNERS.slice(0, 6)
-const PARTNERS_ROW2 = PARTNERS.slice(6)
-
-type Partner = (typeof PARTNERS)[number]
-
-// CSS filter to convert any logo image to #110F56 (dark navy)
 const LOGO_FILTER =
   'brightness(0) saturate(100%) invert(7%) sepia(98%) saturate(2200%) hue-rotate(230deg) brightness(75%) contrast(105%)'
 
-function LogoCard({ partner }: { partner: Partner }) {
+const ROW1 = [1, 2, 3, 4, 5, 6]
+const ROW2 = [6, 7, 8, 9, 10, 11, 12]
+
+function LogoCard({ n }: { n: number }) {
   return (
-    <div className="group mx-4 flex h-[72px] w-40 shrink-0 items-center justify-center px-4">
+    <div className="group mx-6 flex h-[80px] w-44 shrink-0 items-center justify-center px-4">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`/partner/${partner.file}`}
-        alt={partner.name}
+        src={`/partner/${n}.png`}
+        alt={`Партнёр ${n}`}
         width={128}
         height={56}
-        className="max-h-[44px] w-auto max-w-[110px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-60"
+        className="max-h-[48px] w-auto max-w-[120px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-65"
         style={{ filter: LOGO_FILTER }}
       />
     </div>
@@ -44,10 +25,10 @@ function LogoCard({ partner }: { partner: Partner }) {
 interface RowProps {
   direction: 'left' | 'right'
   duration: number
-  partners: readonly Partner[]
+  logos: number[]
 }
 
-function MarqueeRow({ direction, duration, partners }: RowProps) {
+function MarqueeRow({ direction, duration, logos }: RowProps) {
   const anim = direction === 'left' ? 'hgLogoLeft' : 'hgLogoRight'
   return (
     <div
@@ -63,12 +44,8 @@ function MarqueeRow({ direction, duration, partners }: RowProps) {
         className="hg-logo-row flex w-max"
         style={{ animation: `${anim} ${duration}s linear infinite` }}
       >
-        {partners.map((p) => (
-          <LogoCard key={p.name} partner={p} />
-        ))}
-        {partners.map((p) => (
-          <LogoCard key={`dup-${p.name}`} partner={p} />
-        ))}
+        {logos.map((n) => <LogoCard key={n} n={n} />)}
+        {logos.map((n) => <LogoCard key={`dup-${n}`} n={n} />)}
       </div>
     </div>
   )
@@ -91,8 +68,7 @@ export function ClientLogos() {
         }
       `}</style>
 
-      {/* Header */}
-      <div className="container mb-20">
+      <div className="container mb-24">
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-6 bg-blue-primary/30" aria-hidden />
           <span
@@ -107,17 +83,9 @@ export function ClientLogos() {
         </h2>
       </div>
 
-      {/* Carousels */}
-      <div className="space-y-2">
-        <MarqueeRow direction="left" duration={30} partners={PARTNERS_ROW1} />
-
-        <div
-          className="mx-auto w-16 border-t"
-          style={{ borderColor: 'rgba(17,15,86,0.1)' }}
-          aria-hidden
-        />
-
-        <MarqueeRow direction="right" duration={38} partners={PARTNERS_ROW2} />
+      <div className="space-y-4">
+        <MarqueeRow direction="left" duration={30} logos={ROW1} />
+        <MarqueeRow direction="right" duration={38} logos={ROW2} />
       </div>
     </section>
   )
