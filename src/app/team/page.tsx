@@ -115,35 +115,34 @@ export default function TeamPage() {
           title="8 экспертов, 120+ лет совокупного опыта"
           subtitle="Консультанты, тренеры и разработчики с практическим опытом на крупнейших производственных предприятиях России и СНГ."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {EXPERTS.map((expert, index) => (
             <Reveal
               key={expert.name}
               as="article"
               delay={(index % 4) * 0.07}
-              className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"
             >
-              <div className="relative aspect-square w-full overflow-hidden">
-                <Image
-                  src={expert.image}
-                  alt={`${expert.name}, ${expert.role}`}
-                  fill
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                  className="object-cover object-top"
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white to-transparent"
-                />
-              </div>
-              <div className="p-5">
-                <p className="font-bold text-graphite">{expert.name}</p>
-                <p className="mt-0.5 text-sm font-medium text-blue-primary">
-                  {expert.role}
-                </p>
-                <p className="mt-2 text-xs leading-relaxed text-gray-text">
-                  {expert.bio}
-                </p>
+              <div className="group overflow-hidden rounded-xl bg-surface ring-1 ring-border transition-all duration-200 hover:ring-blue-tint">
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src={expert.image}
+                    alt={`${expert.name}, ${expert.role}`}
+                    fill
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="font-semibold text-ink">{expert.name}</p>
+                  <p className="mt-1 text-[13px] leading-snug text-ink-muted">
+                    {expert.role}
+                  </p>
+                  {expert.bio ? (
+                    <p className="mt-2 text-xs leading-relaxed text-ink-muted/70">
+                      {expert.bio}
+                    </p>
+                  ) : null}
+                </div>
               </div>
             </Reveal>
           ))}
