@@ -46,7 +46,7 @@ export function ClientLogos() {
         }
       `}</style>
 
-      <div className="container" style={{ marginBottom: '12rem' }}>
+      <div className="container" style={{ marginBottom: '4.8rem' }}>
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-6 bg-blue-primary/30" aria-hidden />
           <span
