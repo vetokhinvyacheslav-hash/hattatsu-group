@@ -1,6 +1,7 @@
 'use client'
 
-const LOGOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const ROW1 = [1, 2, 3, 4, 5, 6]
+const ROW2 = [7, 8, 9, 10, 11, 12]
 
 function LogoCard({ n }: { n: number }) {
   return (
@@ -37,9 +38,13 @@ export function ClientLogos() {
         .hg-logo-card:hover .hg-logo-img {
           filter: brightness(0) invert(1);
         }
-        @keyframes hgLogoScroll {
+        @keyframes hgLogoScrollLeft {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }
+        }
+        @keyframes hgLogoScrollRight {
+          from { transform: translateX(-50%); }
+          to   { transform: translateX(0); }
         }
         @media (prefers-reduced-motion: reduce) {
           .hg-logo-row { animation: none !important; }
@@ -62,18 +67,29 @@ export function ClientLogos() {
       </div>
 
       <div
-        className="overflow-hidden"
+        className="flex flex-col gap-3"
         style={{
           maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
         }}
       >
-        <div
-          className="hg-logo-row flex w-max gap-3"
-          style={{ animation: 'hgLogoScroll 40s linear infinite' }}
-        >
-          {LOGOS.map((n) => <LogoCard key={n} n={n} />)}
-          {LOGOS.map((n) => <LogoCard key={`dup-${n}`} n={n} />)}
+        <div className="overflow-hidden">
+          <div
+            className="hg-logo-row flex w-max gap-3"
+            style={{ animation: 'hgLogoScrollLeft 40s linear infinite' }}
+          >
+            {ROW1.map((n) => <LogoCard key={n} n={n} />)}
+            {ROW1.map((n) => <LogoCard key={`dup-${n}`} n={n} />)}
+          </div>
+        </div>
+        <div className="overflow-hidden">
+          <div
+            className="hg-logo-row flex w-max gap-3"
+            style={{ animation: 'hgLogoScrollRight 40s linear infinite' }}
+          >
+            {ROW2.map((n) => <LogoCard key={n} n={n} />)}
+            {ROW2.map((n) => <LogoCard key={`dup-${n}`} n={n} />)}
+          </div>
         </div>
       </div>
     </section>
