@@ -7,14 +7,14 @@ const LOGOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 function LogoCard({ n }: { n: number }) {
   return (
-    <div className="group mx-3 flex h-[90px] w-36 shrink-0 items-center justify-center">
+    <div className="group mx-4 flex h-[80px] w-[260px] shrink-0 items-center justify-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/partner/${n}.png`}
         alt={`Партнёр ${n}`}
-        width={140}
+        width={180}
         height={70}
-        className="max-h-[64px] w-auto max-w-[130px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-65"
+        className="max-h-[58px] w-auto max-w-[180px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-65"
         style={{ filter: LOGO_FILTER }}
       />
     </div>
@@ -23,7 +23,7 @@ function LogoCard({ n }: { n: number }) {
 
 export function ClientLogos() {
   return (
-    <section className="bg-white py-20 lg:py-24">
+    <section className="bg-white py-10 lg:py-12">
       <style>{`
         @keyframes hgLogoScroll {
           from { transform: translateX(0); }
@@ -34,7 +34,7 @@ export function ClientLogos() {
         }
       `}</style>
 
-      <div className="container mb-20">
+      <div className="container mb-12">
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-6 bg-blue-primary/30" aria-hidden />
           <span
