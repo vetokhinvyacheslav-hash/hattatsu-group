@@ -343,16 +343,24 @@ export function Header() {
 
             <Link
               href="/diagnostics"
-              className="inline-flex items-center justify-center rounded-full bg-blue-primary px-5 py-2.5 text-sm font-semibold text-white transition-all duration-500 hover:bg-blue-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-secondary"
-              style={!scrolled ? { boxShadow: '0 0 0 2px white' } : undefined}
+              className="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              style={
+                scrolled
+                  ? { borderColor: '#110F56', color: '#110F56' }
+                  : { borderColor: 'white', color: 'white' }
+              }
             >
               Пройти диагностику
             </Link>
             <MeetingButton
               label="Консультация"
               variant="secondary"
-              className="!px-5 !py-2.5 transition-all duration-500"
-              style={!scrolled ? { borderColor: 'white', color: 'white' } : undefined}
+              className="!px-5 !py-2.5 transition-all duration-500 hover:!bg-transparent"
+              style={
+                scrolled
+                  ? { borderColor: '#110F56', color: '#110F56' }
+                  : { borderColor: 'white', color: 'white' }
+              }
             />
           </div>
 

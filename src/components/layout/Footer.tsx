@@ -26,11 +26,11 @@ export function Footer() {
           <div className="pt-0">
             <Link href="/" aria-label="Hattatsu Group — на главную">
               <Image
-                src="/logo.svg"
+                src="/logo-white.svg"
                 alt="Hattatsu Group"
-                width={160}
-                height={52}
-                className="h-9 w-auto brightness-0 invert"
+                width={200}
+                height={64}
+                className="h-10 w-auto"
               />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
@@ -100,7 +100,8 @@ export function Footer() {
             <div className="mt-4 space-y-3">
               <Link
                 href="/diagnostics"
-                className="inline-flex w-full items-center justify-center rounded-full bg-orange px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-orange/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/30 bg-white px-5 py-3 text-sm font-semibold transition-colors duration-200 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                style={{ color: '#110F56' }}
               >
                 Пройти диагностику
               </Link>

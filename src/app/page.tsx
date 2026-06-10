@@ -295,7 +295,7 @@ export default function HomePage() {
       <section className="bg-white section-padding">
         <div className="container">
           <SectionHeading
-            title="Сколько стоят потери вашего производства?"
+            title="Сколько стоят потери Вашей компании?"
             subtitle="Рассчитайте потенциальный эффект от внедрения Lean за 30 секунд."
           />
           <div className="mt-12">
@@ -399,7 +399,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <ButtonLink
                   href="/diagnostics"
-                  className="!bg-orange !text-white hover:!bg-orange-hover"
+                  className="!bg-white !text-[#110F56] hover:!bg-gray-50 !border !border-white/30"
                 >
                   Начать диагностику — бесплатно
                 </ButtonLink>
