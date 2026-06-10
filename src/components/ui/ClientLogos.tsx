@@ -1,20 +1,21 @@
 'use client'
 
+// Filter converts any image to brand graphite #0C1023
 const LOGO_FILTER =
-  'brightness(0) saturate(100%) invert(7%) sepia(98%) saturate(2200%) hue-rotate(230deg) brightness(75%) contrast(105%)'
+  'brightness(0) saturate(100%) invert(5%) sepia(35%) saturate(700%) hue-rotate(210deg) brightness(52%) contrast(115%)'
 
 const LOGOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 function LogoCard({ n }: { n: number }) {
   return (
-    <div className="group mx-4 flex h-[80px] w-[260px] shrink-0 items-center justify-center">
+    <div className="group mx-1 flex h-[88px] w-[284px] shrink-0 items-center justify-center px-6">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/partner/${n}.png`}
         alt={`Партнёр ${n}`}
-        width={180}
-        height={70}
-        className="max-h-[58px] w-auto max-w-[180px] object-contain opacity-40 transition-opacity duration-300 group-hover:opacity-65"
+        width={220}
+        height={80}
+        className="max-h-[72px] w-full object-contain opacity-50 transition-opacity duration-300 group-hover:opacity-80"
         style={{ filter: LOGO_FILTER }}
       />
     </div>
