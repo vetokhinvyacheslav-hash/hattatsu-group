@@ -25,49 +25,55 @@ const EXPERTS: readonly Expert[] = [
     name: 'Джанунц Смбат',
     role: 'Основатель',
     bio: '18+ лет в Lean. Ex-AGC Japan, Korea, Russia. Vlerick Leuven Gent Management School.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%A1%D0%BC%D0%B1%D0%B0%D1%82.png',
   },
   {
     name: 'Горшенин Семён',
     role: 'Эксперт Kaizen & Lean Production',
     bio: '140+ Kaizen-проектов. AGC Flat Glass, Barilla RUS. 6 Sigma Green Belt, Festo Academy.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%A1%D0%B5%D0%BC%D1%91%D0%BD.png',
   },
   {
     name: 'Ездаков Максим',
     role: 'Операционная эффективность',
     bio: 'Рост OEE с 70 до 87%. AGC — от мастера до зам. директора по бизнес-системам.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC.png',
   },
   {
     name: 'Терещенко Владислав',
     role: 'Цифровое обучение & симуляторы',
     bio: '10+ зарегистрированных программ ЭВМ. СПбПУ, Nairi International University.',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2.png',
   },
   {
     name: 'Киреев Артур',
     role: 'Маркетинг & развитие бизнеса',
     bio: 'Доцент СПбПУ. 25+ лет в маркетинге и образовательных программах.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%90%D1%80%D1%82%D1%83%D1%80.png',
   },
   {
     name: 'Черных Лариса',
     role: 'HR-эксперт',
     bio: 'CIPD UK. Магистр международного HR, Университет Кингстона. Кандидат психологических наук.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%9B%D0%B0%D1%80%D0%B8%D1%81%D0%B0.png',
   },
   {
     name: 'Ветохин Вячеслав',
     role: 'Визуализация & бизнес-коммуникации',
     bio: 'Перевод сложных научных концепций в язык бизнеса и визуальных решений. Автор патентов.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%92%D1%8F%D1%87%D0%B5%D1%81%D0%BB%D0%B0%D0%B2.png',
   },
   {
     name: 'Арустамян Арсен',
     role: 'Fullstack веб-разработка',
     bio: 'Разработка LMS, корпоративных порталов и интерактивных дашбордов для промышленности.',
-    image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%90%D1%80%D1%81%D0%B5%D0%BD.png',
+  },
+  {
+    name: 'Шептун Татьяна',
+    role: 'Маркетинг и Event',
+    bio: '',
+    image: '/team/%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0.png',
   },
 ]
 
@@ -123,7 +129,7 @@ export default function TeamPage() {
                   alt={`${expert.name}, ${expert.role}`}
                   fill
                   sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                  className="object-cover object-left"
+                  className="object-cover object-top"
                 />
                 <div
                   aria-hidden

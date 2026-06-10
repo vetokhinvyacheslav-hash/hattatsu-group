@@ -109,14 +109,14 @@ export function AboutSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-accent" aria-hidden />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-accent">
+              <span className="h-px w-8 bg-white/30" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
                 О компании
               </span>
             </div>
 
             {/* Heading with left accent border */}
-            <div className="relative border-l-2 border-blue-accent/30 pl-6">
+            <div className="relative border-l-2 border-white/20 pl-6">
               <h2 className="h2 text-white">
                 Международная группа практиков, а не теоретиков
               </h2>
@@ -147,7 +147,7 @@ export function AboutSection() {
                 >
                   <span
                     aria-hidden
-                    className="mt-[3px] flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-blue-accent/15 text-[9px] font-bold text-blue-accent"
+                    className="mt-[3px] flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-white/10 text-[9px] font-bold text-white"
                   >
                     ✓
                   </span>

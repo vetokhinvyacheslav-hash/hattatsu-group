@@ -7,7 +7,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { ClientLogos } from '@/components/ui/ClientLogos'
 import { ROICalculator } from '@/components/ui/ROICalculator'
 import { KaizenCalculator } from '@/components/ui/KaizenCalculator'
-import { CasesSection } from '@/components/ui/CasesSection'
+import { ContactForm } from '@/components/ui/ContactForm'
 import { WorldMap } from '@/components/ui/WorldMap'
 import { AboutSection } from '@/components/ui/AboutSection'
 import { MissionSection } from '@/components/ui/MissionSection'
@@ -102,50 +102,22 @@ const TEAM: readonly TeamMember[] = [
   {
     name: 'Джанунц Смбат',
     role: 'Основатель · Lean Production 18 лет',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%A1%D0%BC%D0%B1%D0%B0%D1%82.png',
   },
   {
     name: 'Горшенин Семён',
     role: 'Kaizen & Lean Production',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Ездаков Максим',
-    role: 'Операционная эффективность',
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%A1%D0%B5%D0%BC%D1%91%D0%BD.png',
   },
   {
     name: 'Терещенко Владислав',
     role: 'Цифровое обучение · Симуляторы',
-    image:
-      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2.png',
   },
   {
     name: 'Киреев Артур',
     role: 'Маркетинг · Развитие бизнеса',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Черных Лариса',
-    role: 'HR-эксперт · CIPD UK',
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Ветохин Вячеслав',
-    role: 'Визуализация · Коммуникации',
-    image:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Арустамян Арсен',
-    role: 'Fullstack-разработка',
-    image:
-      'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80',
+    image: '/team/%D0%90%D1%80%D1%82%D1%83%D1%80.png',
   },
 ]
 
@@ -232,7 +204,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: SERVICES ── */}
+      {/* ── SECTION 2: О КОМПАНИИ ── */}
+      <AboutSection />
+
+      {/* ── SECTION 3: SERVICES ── */}
       <section>
         {/* Heading */}
         <div className="bg-surface">
@@ -281,9 +256,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* ── SECTION 3: О КОМПАНИИ ── */}
-      <AboutSection />
 
       {/* ── SECTION 4: GEOGRAPHY ── */}
       <section className="bg-white overflow-hidden">
@@ -391,10 +363,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 11: CASES ── */}
-      <CasesSection />
-
-      {/* ── SECTION 12: DIAGNOSTIC CTA ── */}
+      {/* ── SECTION 11: DIAGNOSTIC CTA ── */}
       <section className="relative overflow-hidden bg-blue-primary">
         <div
           aria-hidden
@@ -443,41 +412,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 13: FINAL CTA ── */}
-      <section className="bg-blue-primary">
-        <div className="container section-padding">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+      {/* ── SECTION 13: CONTACT FORM ── */}
+      <section className="bg-white section-padding">
+        <div className="container">
+          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
+
+            {/* Left: heading + benefits */}
             <div>
-              <p className="label mb-5 text-white/40">Начало работы</p>
-              <h2 className="h2 text-white">
-                Готовы вывести производство на новый уровень?
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-8 bg-blue-primary" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-primary">
+                  Начало работы
+                </span>
+              </div>
+              <h2 className="h2 text-ink">
+                Готовы вывести компанию на новый уровень?
               </h2>
-              <p className="body-text mt-5 text-white/65">
-                Пройдите бесплатную диагностику или запишитесь на встречу с
-                экспертом — обсудим задачи и предложим оптимальный маршрут.
+              <p className="body-text mt-5 text-ink-muted">
+                Запишитесь на консультацию от эксперта — обсудим задачу и подберём лучшее решение.
               </p>
+              <ul className="mt-8 space-y-3">
+                {[
+                  'Бесплатная первичная консультация',
+                  'Ответ в течение рабочего дня',
+                  'Без обязательств — только польза',
+                ].map((point) => (
+                  <li key={point} className="flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-primary/10 text-[9px] font-bold text-blue-primary"
+                    >
+                      ✓
+                    </span>
+                    <span className="text-[14px] leading-relaxed text-ink-muted">{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex flex-col items-start gap-4">
-              <ButtonLink
-                href="/diagnostics"
-                className="!bg-orange !text-white hover:!bg-orange-hover"
-              >
-                Пройти диагностику производства
-              </ButtonLink>
-              <ButtonLink
-                href="/contacts"
-                variant="secondary"
-                className="!border-white/25 !text-white hover:!border-white/50 hover:!bg-white/10"
-              >
-                Записаться на встречу →
-              </ButtonLink>
-              <a
-                href="/documents"
-                className="text-sm text-white/40 transition-colors hover:text-white/70"
-              >
-                Скачать презентацию компании
-              </a>
+
+            {/* Right: form */}
+            <div className="rounded-2xl border border-border bg-surface p-7 shadow-sm lg:p-9">
+              <ContactForm
+                formType="Консультация с главной страницы"
+                fields={['name', 'company', 'contact', 'direction', 'message']}
+                submitLabel="Записаться на консультацию"
+              />
             </div>
+
           </div>
         </div>
       </section>

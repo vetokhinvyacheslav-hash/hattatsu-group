@@ -1,14 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 interface MissionItem {
   eyebrow: string
   title: string
   body: string
-  icon: ReactNode
+  iconSrc: string
 }
 
 interface ApproachItem {
@@ -22,25 +21,13 @@ const MISSION_ITEMS: MissionItem[] = [
     eyebrow: 'Наша цель',
     title: 'Стать лучшей консалтинговой производственной экосистемой в России и СНГ',
     body: 'Мы строим долгосрочные партнёрства с предприятиями, которые хотят работать на уровне мировых стандартов — системно, измеримо и с устойчивым результатом.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="6" />
-        <circle cx="12" cy="12" r="2" />
-      </svg>
-    ),
+    iconSrc: '/mission/%D0%A6%D0%B5%D0%BB%D1%8C.svg',
   },
   {
     eyebrow: 'Наша миссия',
     title: 'Выявляем скрытый потенциал производств и трансформируем его в успех',
     body: 'Внедряем культуру непрерывных улучшений и научный подход к управлению, превращая скрытый потенциал предприятий в измеримые и устойчивые результаты.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5" />
-        <path d="M2 12l10 5 10-5" />
-      </svg>
-    ),
+    iconSrc: '/mission/%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F.svg',
   },
 ]
 
@@ -109,8 +96,9 @@ export function MissionSection() {
                 <div className="pl-2">
                   {/* Icon + label row */}
                   <div className="mb-3 flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-primary text-white">
-                      {item.icon}
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-primary">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={item.iconSrc} alt="" width={20} height={20} />
                     </div>
                     <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-blue-primary">
                       {item.eyebrow}
@@ -130,46 +118,24 @@ export function MissionSection() {
           </div>
         </motion.div>
 
-        {/* ── Center: Photo with overlay + floating stat ── */}
+        {/* ── Center: Photo with overlay ── */}
         <div className="relative min-h-[380px] lg:min-h-0">
           <Image
-            src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=900&q=80"
-            alt="Производственный эксперт на предприятии"
+            src="/mission/%D0%97%D0%B0%D1%87%D0%B5%D0%BC%20%D0%BC%D1%8B%20%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D0%BC.png"
+            alt="Зачем мы существуем — Hattatsu Group"
             fill
             sizes="(min-width: 1024px) 37vw, 100vw"
             className="object-cover object-center"
           />
-          {/* Gradient overlay: subtle blue top, dark bottom */}
+          {/* Gradient overlay: subtle top, lighter bottom */}
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(180deg, rgba(17,15,86,0.18) 0%, rgba(0,0,0,0) 35%, rgba(32,37,47,0.72) 100%)',
+                'linear-gradient(180deg, rgba(17,15,86,0.12) 0%, rgba(0,0,0,0) 40%, rgba(32,37,47,0.45) 100%)',
             }}
           />
-
-          {/* Floating stat badge — bottom */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 p-6 lg:p-8"
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.35 }}
-          >
-            <div
-              className="rounded-2xl p-5 ring-1 ring-white/15"
-              style={{
-                background: 'rgba(255,255,255,0.08)',
-                backdropFilter: 'blur(14px)',
-                WebkitBackdropFilter: 'blur(14px)',
-              }}
-            >
-              <p className="text-3xl font-extrabold text-white">100+</p>
-              <p className="mt-1 text-[13px] text-white/75">предприятий трансформировано</p>
-              <p className="mt-0.5 text-xs text-white/45">В 15+ отраслях промышленности</p>
-            </div>
-          </motion.div>
         </div>
 
         {/* ── Right: Approaches ── */}
